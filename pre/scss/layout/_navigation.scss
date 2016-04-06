@@ -1,0 +1,162 @@
+/*=============================================
+.main-nav Main navigation
+=============================================*/
+
+@keyframes bgmenu {
+    from {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    to {
+        background: rgba(0, 0, 0, 0.9);
+    }
+}
+
+@keyframes menulinks {
+    from {
+        padding: 0 0;
+        opacity: 0;
+    }
+    to {
+        padding: 10px 0;
+        opacity: 1;
+    }
+}
+
+.main-nav {
+    position: fixed;
+    top: 0px;
+    z-index: 9999;
+    padding: 40px 0;
+    width: 100%;
+    background-color: #232731;
+    transition: 0.3s;
+    @include rwd(medium) {
+        padding: 40px 0;
+        background-color: transparent;
+        &.is-move {
+            top: 0px;
+            padding: 30px 0;
+            background-color: #232731;
+            color: #fff;
+            transition: 0.3s;
+            .main-nav__logo {
+                background-position: 0px 50px;
+                transition: 0.3s;
+                transform: translateY(-15px);
+            }
+        }
+    }
+    &__logo {
+        position: absolute;
+        margin: 0 25px;
+        width: 70px;
+        height: 50px;
+        background-position: 0px 0px;
+        text-indent: -900px;
+        transition: 0.3s;
+        transform: translateY(-25px);
+        @include retina(logo, png, 70px, 50px);
+        @include rwd(medium) {
+            background-position: 0px 0px;
+            transform: translateY(-15px);
+        }
+    }
+    &__toggle {
+        position: absolute;
+        top: 30px;
+        right: 25px;
+        z-index: 9999;
+        padding: 10px 0 10px 0;
+        cursor: pointer;
+        span:after {
+            position: absolute;
+            bottom: 0px;
+        }
+        span:before {
+            position: absolute;
+            top: 0px;
+        }
+        @include rwd(medium) {
+            display: none;
+        }
+        span,
+        span:after,
+        span:before {
+            display: block;
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            content: "";
+            transition: 0.4s;
+        }
+        &.is-open span {
+            background: none;
+        }
+        &.is-open span:before {
+            transition: 0.4s;
+            transform: translatey(10px) rotate(-45deg);
+        }
+        &.is-open span:after {
+            transition: 0.4s;
+            transform: translatey(-10px) rotate(45deg);
+        }
+    }
+    &__colapse {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+        display: none;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        @include rwd(medium) {
+            position: initial;
+            display: inline-block;
+            background: none;
+        }
+        &.is-open {
+            display: block;
+            animation-name: bgmenu;
+            animation-duration: 0.5s;
+            .main-nav__item {
+                animation-name: menulinks;
+                animation-duration: 0.5s;
+            }
+        }
+    }
+    &__list {
+        position: absolute;
+        top: 45%;
+        padding-left: 0px;
+        width: 100%;
+        text-align: center;
+        transform: translateY(-50%);
+        @include rwd(medium) {
+            position: initial;
+            margin: 0;
+            width: 100%;
+            text-align: center;
+            transform: none;
+        }
+    }
+    &__item {
+        display: block;
+        font-size: 1.7rem;
+        padding: 10px 0;
+        @include rwd(medium) {
+            display: inline-block;
+            font-size: 16px;
+            padding: 0 15px;
+        }
+        a {
+            position: relative;
+            padding-right: 0px;
+            color: #fff;
+            text-decoration: none;
+            &:hover {
+                color: $brand-color-1;
+            }
+        }
+    }
+}

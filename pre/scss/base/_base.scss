@@ -1,0 +1,19 @@
+/*=============================================
+Base
+=============================================*/
+
+
+/**
+ * Set up a decent box model on the root element
+ */
+
+html {
+    box-sizing: border-box;
+}
+
+a {
+    transition: 0.3s;
+    &:hover {
+        transition: 0.5s;
+    }
+}

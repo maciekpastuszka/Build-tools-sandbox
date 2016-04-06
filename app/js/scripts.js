@@ -1,0 +1,1 @@
+$(".main-nav").on("click",".main-nav__toggle",function(){$(this).toggleClass("is-open"),$(".main-nav__colapse").toggleClass("is-open")}),$(window).scroll(function(n){var a=$(window).scrollTop();a>=20?$(".main-nav").addClass("is-move"):$(".main-nav").removeClass("is-move")});

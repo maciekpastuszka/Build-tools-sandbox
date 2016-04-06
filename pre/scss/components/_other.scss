@@ -1,0 +1,65 @@
+/*=============================================
+.alert Alerts
+=============================================*/
+
+.alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    &--warning {
+        border-color: #ebccd1;
+        background-color: #f2dede;
+        color: #a94442;
+    }
+    &--success {
+        border-color: #d6e9c6;
+        background-color: #dff0d8;
+        color: #3c763d;
+    }
+}
+
+
+/*=============================================
+.btn Buttons
+=============================================*/
+
+.btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 16px;
+    max-width: 200px;
+    border-radius: 0px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    &:hover,
+    &:focus,
+    &:active {
+        color: #fff;
+        text-decoration: none;
+    }
+    &--fill {
+        border: 1px solid $brand-color-1;
+        background: $brand-color-1;
+        color: #fff;
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid #fff;
+            background: transparent;
+        }
+    }
+    &--transparent {
+        border: 1px solid #fff;
+        background: transparent;
+        color: #fff;
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid $brand-color-1;
+            background: $brand-color-1;
+        }
+    }
+}

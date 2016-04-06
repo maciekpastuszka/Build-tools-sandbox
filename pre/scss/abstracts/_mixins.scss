@@ -1,0 +1,65 @@
+/*=============================================
+Mixins
+=============================================*/
+
+/**
+RWD
+*/
+
+$rwd-small: 768px;
+$rwd-medium: 992px;
+$rwd-large: 1200px;
+@mixin rwd($width) {
+    @if $width==small {
+        @media only screen and (min-width: $rwd-small) {
+            @content;
+        }
+    }
+    @else if $width==medium {
+        @media only screen and (min-width: $rwd-medium) {
+            @content;
+        }
+    }
+    @else if $width==large {
+        @media only screen and (min-width: $rwd-large) {
+            @content;
+        }
+    }
+}
+
+
+/**
+Retina
+*/
+
+@mixin retina($file, $type, $width, $height) {
+    background-image: url('../img/' + $file + '.' + $type);
+    @media (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+        & {
+            background-image: url('../img/' + $file + '-2x.' + $type);
+            background-size: $width $height;
+        }
+    }
+}
+
+
+/**
+Section background
+*/
+
+@mixin section-bg($file,
+$type) {
+    background-image: url('../img/' + $file + '.' + $type);
+    background-size: cover;
+    background-attachment: fixed;
+    @include rwd(small) {
+        background-image: url('../img/' + $file + '-t.' + $type);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    @include rwd(large) {
+        background-image: url('../img/' + $file + '-d.' + $type);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}

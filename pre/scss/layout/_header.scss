@@ -1,0 +1,43 @@
+/*=============================================
+Main Header
+=============================================*/
+
+.main-header {
+    background-attachment: fixed;
+    background-size: cover;
+
+    @include section-bg(bg, svg);
+    p {
+        color: #fff;
+    }
+    h1 {
+        color: #fff;
+        text-shadow: 1px 1px 2px #4b4b4b;
+        font-size: 3rem;
+    }
+    .container {
+        padding: 100px 20px 40px 20px;
+        text-align: center;
+
+        @include rwd(small) {
+            padding: 20vh 0 40px;
+        }
+    }
+    &__buttons {
+        display: inline-block;
+        margin: 40px auto;
+        .btn {
+            margin: 0px;
+            margin-bottom: 10px;
+
+            @include rwd(small) {
+                display: inline-block;
+            }
+            &:first-child {
+                @include rwd(small) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
