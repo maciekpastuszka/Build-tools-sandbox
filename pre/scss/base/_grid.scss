@@ -1,0 +1,59 @@
+/*=============================================
+Grid
+=============================================*/
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    @include rwd(small) {
+        max-width: $rwd-small - 50px;
+    }
+    @include rwd(medium) {
+        max-width: $rwd-medium - 50px;
+    }
+    @include rwd(large) {
+        max-width: $rwd-large - 50px;
+    }
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+}
+
+$cels: 12;
+$i: 1;
+$sum: '.m-1, .t-1, .d-1,';
+@while $i <=$cels {
+    $sum: $sum #{'.m-'}#{$i}#{', '} #{' .t-'}#{$i}#{', '} #{' .d-'}#{$i}#{', '};
+    $i: $i + 1;
+}
+
+#{$sum} {
+    float: left;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+@for $i from 1 through $cels {
+    .m-#{$i} {
+        width: (100% / 12) * $i;
+    }
+}
+
+@include rwd(small) {
+    @for $i from 1 through $cels {
+        .t-#{$i} {
+            width: (100% / 12) * $i;
+        }
+    }
+}
+
+@include rwd(medium) {
+    @for $i from 1 through $cels {
+        .d-#{$i} {
+            width: (100% / 12) * $i;
+        }
+    }
+}

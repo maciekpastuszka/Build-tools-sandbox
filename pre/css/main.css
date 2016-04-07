@@ -371,6 +371,120 @@ a {
 Fonts
 =============================================*/
 /*=============================================
+Grid
+=============================================*/
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box; }
+  @media only screen and (min-width: 768px) {
+    .container {
+      max-width: 718px; } }
+  @media only screen and (min-width: 992px) {
+    .container {
+      max-width: 942px; } }
+  @media only screen and (min-width: 1200px) {
+    .container {
+      max-width: 1150px; } }
+  .container:after {
+    clear: both;
+    content: '';
+    display: table; }
+
+.m-1, .t-1, .d-1, .m-1, .t-1, .d-1, .m-2, .t-2, .d-2, .m-3, .t-3, .d-3, .m-4, .t-4, .d-4, .m-5, .t-5, .d-5, .m-6, .t-6, .d-6, .m-7, .t-7, .d-7, .m-8, .t-8, .d-8, .m-9, .t-9, .d-9, .m-10, .t-10, .d-10, .m-11, .t-11, .d-11, .m-12, .t-12, .d-12 {
+  float: left;
+  padding: 0 15px;
+  box-sizing: border-box; }
+
+.m-1 {
+  width: 8.33333%; }
+
+.m-2 {
+  width: 16.66667%; }
+
+.m-3 {
+  width: 25%; }
+
+.m-4 {
+  width: 33.33333%; }
+
+.m-5 {
+  width: 41.66667%; }
+
+.m-6 {
+  width: 50%; }
+
+.m-7 {
+  width: 58.33333%; }
+
+.m-8 {
+  width: 66.66667%; }
+
+.m-9 {
+  width: 75%; }
+
+.m-10 {
+  width: 83.33333%; }
+
+.m-11 {
+  width: 91.66667%; }
+
+.m-12 {
+  width: 100%; }
+
+@media only screen and (min-width: 768px) {
+  .t-1 {
+    width: 8.33333%; }
+  .t-2 {
+    width: 16.66667%; }
+  .t-3 {
+    width: 25%; }
+  .t-4 {
+    width: 33.33333%; }
+  .t-5 {
+    width: 41.66667%; }
+  .t-6 {
+    width: 50%; }
+  .t-7 {
+    width: 58.33333%; }
+  .t-8 {
+    width: 66.66667%; }
+  .t-9 {
+    width: 75%; }
+  .t-10 {
+    width: 83.33333%; }
+  .t-11 {
+    width: 91.66667%; }
+  .t-12 {
+    width: 100%; } }
+
+@media only screen and (min-width: 992px) {
+  .d-1 {
+    width: 8.33333%; }
+  .d-2 {
+    width: 16.66667%; }
+  .d-3 {
+    width: 25%; }
+  .d-4 {
+    width: 33.33333%; }
+  .d-5 {
+    width: 41.66667%; }
+  .d-6 {
+    width: 50%; }
+  .d-7 {
+    width: 58.33333%; }
+  .d-8 {
+    width: 66.66667%; }
+  .d-9 {
+    width: 75%; }
+  .d-10 {
+    width: 83.33333%; }
+  .d-11 {
+    width: 91.66667%; }
+  .d-12 {
+    width: 100%; } }
+
+/*=============================================
 Helpers
 =============================================*/
 .clearfix::after {
@@ -688,6 +802,12 @@ Cookies
     color: #fff;
     text-decoration: none;
     cursor: pointer; }
+
+/*=============================================
+Home
+=============================================*/
+.article__header {
+  color: #e50050; }
 
 /*=============================================
 Theme

@@ -6,9 +6,6 @@ Mixins
 RWD
 */
 
-$rwd-small: 768px;
-$rwd-medium: 992px;
-$rwd-large: 1200px;
 @mixin rwd($width) {
     @if $width==small {
         @media only screen and (min-width: $rwd-small) {

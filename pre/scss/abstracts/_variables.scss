@@ -34,4 +34,8 @@ $mid-grey: rgb(153, 153, 153) !default;
 $dark-grey: rgb(68, 68, 68) !default;
 /// Container's maximum width
 /// @type Length
-$max-width: 1180px !default;
+
+///Breakpoints
+$rwd-small: 768px;
+$rwd-medium: 992px;
+$rwd-large: 1200px;
