@@ -360,10 +360,12 @@ Base
  * Set up a decent box model on the root element
  */
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  color: #222222; }
 
 a {
-  transition: 0.3s; }
+  transition: 0.3s;
+  text-decoration: none; }
   a:hover {
     transition: 0.5s; }
 
@@ -390,6 +392,19 @@ Grid
     clear: both;
     content: '';
     display: table; }
+  .container--flex {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-content: space-between;
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
 
 .m-1, .t-1, .d-1, .m-1, .t-1, .d-1, .m-2, .t-2, .d-2, .m-3, .t-3, .d-3, .m-4, .t-4, .d-4, .m-5, .t-5, .d-5, .m-6, .t-6, .d-6, .m-7, .t-7, .d-7, .m-8, .t-8, .d-8, .m-9, .t-9, .d-9, .m-10, .t-10, .d-10, .m-11, .t-11, .d-11, .m-12, .t-12, .d-12 {
   float: left;
@@ -484,6 +499,32 @@ Grid
   .d-12 {
     width: 100%; } }
 
+@media only screen and (min-width: 1200px) {
+  .l-1 {
+    width: 8.33333%; }
+  .l-2 {
+    width: 16.66667%; }
+  .l-3 {
+    width: 25%; }
+  .l-4 {
+    width: 33.33333%; }
+  .l-5 {
+    width: 41.66667%; }
+  .l-6 {
+    width: 50%; }
+  .l-7 {
+    width: 58.33333%; }
+  .l-8 {
+    width: 66.66667%; }
+  .l-9 {
+    width: 75%; }
+  .l-10 {
+    width: 83.33333%; }
+  .l-11 {
+    width: 91.66667%; }
+  .l-12 {
+    width: 100%; } }
+
 /*=============================================
 Helpers
 =============================================*/
@@ -515,6 +556,15 @@ section.padding {
 
 section.padding-small {
   padding: 30px 0 50px 0; }
+
+/*=============================================
+Img
+=============================================*/
+.img--circle {
+  border-radius: 50%; }
+
+.img--responsive {
+  max-width: 100%; }
 
 /*=============================================
 Main Header
@@ -727,6 +777,59 @@ Main Header
         color: #e50050; }
 
 /*=============================================
+Grid sections
+=============================================*/
+.grid__element {
+  border: 1px solid #e50050;
+  text-align: center;
+  padding: 10px;
+  margin: 15px 0; }
+
+.grid__title {
+  color: #e50050; }
+
+/*=============================================
+Articles
+=============================================*/
+.article__header h1 {
+  color: #e50050;
+  margin-bottom: 0.3em; }
+
+.article__header p {
+  margin: 10px 0; }
+
+.article__figure {
+  margin: 0;
+  max-height: 250px;
+  overflow: hidden; }
+  @media only screen and (min-width: 768px) {
+    .article__figure {
+      max-height: 150px; } }
+
+.article__img {
+  max-width: 100%;
+  width: 100%; }
+
+.article--flex {
+  padding: 0 15px;
+  -webkit-flex: 1 300px;
+  -ms-flex: 1 300px;
+  flex: 1 300px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .article--flex .article__more {
+    margin-top: auto; }
+
+.article__link {
+  color: #222222; }
+  .article__link:hover .article__img {
+    opacity: 0.8; }
+
+/*=============================================
 Footer
 =============================================*/
 .main-footer {
@@ -780,6 +883,29 @@ Footer
     .btn--transparent:hover, .btn--transparent:focus, .btn--transparent:active {
       border: 1px solid #e50050;
       background: #e50050; }
+  .btn--pink {
+    border: 1px solid #e50050;
+    background: transparent;
+    color: #e50050; }
+    .btn--pink:hover, .btn--pink:focus, .btn--pink:active {
+      border: 1px solid #e50050;
+      background: #e50050;
+      color: #fff; }
+
+/*=============================================
+Section title
+=============================================*/
+.section__title {
+  text-align: center;
+  font-size: 2.5em; }
+  .section__title:after {
+    display: block;
+    margin: 20px auto;
+    max-width: 180px;
+    height: 3px;
+    background-color: #e50050;
+    color: #e50050;
+    content: " "; }
 
 /*=============================================
 Cookies
@@ -806,8 +932,11 @@ Cookies
 /*=============================================
 Home
 =============================================*/
-.article__header {
-  color: #e50050; }
+.about {
+  font-size: 1.2rem; }
+  .about__figure {
+    margin: 0;
+    text-align: center; }
 
 /*=============================================
 Theme

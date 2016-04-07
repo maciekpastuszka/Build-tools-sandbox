@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
     <nav class="main-nav" role="navigation">
         <div class="container">
             <a href="/index.php" class="main-nav__logo">Logo title</a>
@@ -38,7 +37,6 @@
         </div>
     </nav>
 
-
     <header class="main-header">
         <div class="container">
             <h1>Boilerplate title!</h1>
@@ -52,44 +50,106 @@
 
     <main>
         <section class="about padding">
+            <article class="container about__container">
+                <figure class="about__figure m-12 t-6 d-4">
+                    <img src="/img/about.jpg" alt="O nas" class="img--circle img--responsive">
+                </figure>
+                <div class="m-12 t-6 d-8">
+                    <header class="about__title">
+                        <h2>About</h2>
+                    </header>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborm dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ce c</p>
+
+                    <p>isi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esm dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cse c</p>
+                    <a href="#" class="btn btn--pink">More</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="grid padding-small gray">
+            <h1 class="section__title">Grid</h1>
             <div class="container">
-                About
+                <div class="m-12 t-6 d-3">
+                    <div class="grid__element">
+                        <h2 class="grid__title">I'm grid element</h2>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="m-12 t-6 d-3">
+                    <div class="grid__element">
+                        <h2 class="grid__title">I'm another element</h2>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="m-12 t-12 d-6">
+                    <div class="grid__element">
+                        <h2 class="grid__title">I'm big grid element</h2>
+                        <p>Lorem ipsum, dolor sit</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="articles padding gray">
+        <section class="articles padding-small">
+            <h1 class="section__title">Flex</h1>
+            <div class="container container--flex">
 
-            <div class="container">
-                <article class="article d-4 t-6 m-12">
-                    <header class="article__header">
-                        <h3>Title</h3>
-                    </header>
+                <article class="article article--flex">
+                    <a href="" class="article__link">
+                        <header class="article__header">
+                            <h1>Title</h1>
+                            <p>
+                                <time itemprop="datePublished" datetime="2016-04-01">2 days ago</time>
+                            </p>
+                        </header>
 
-                    <p class="article__description"></p>
+                        <figure class="article__figure">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="/img/f2-2x.jpg">
+                                <img src="/img/f2.jpg" alt="Lorem ipsum" class="article__img">
+                            </picture>
+                        </figure>
+                        <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprureenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprure denderit in denderit in voluptate velit es</p>
+
+                        <a href="#" class="btn btn--pink article__more">More</a> </a>
                 </article>
 
-                <article class="article d-4 t-6 m-12">
-                    <header class="article__header">
-                        <h3>Title</h3>
-                    </header>
-
-                    <p class="article__description"></p>
-
-                </article>
-
-                <article class="article d-4 t-6 m-12">
-                    <header class="article__header">
-                        <h3>Title</h3>
-                    </header>
-
-                    <p class="article__description"></p>
+                <article class="article article--flex">
+                    <a href="" class="article__link">
+                        <header class="article__header">
+                            <h1>Other title</h1>
+                            <p>
+                                <time itemprop="datePublished" datetime="2016-04-01">2 days ago</time>
+                            </p>
+                        </header>
+                        <figure class="article__figure">
+                            <img src="/img/f1.jpg" alt="Lorem ipsum" class="article__img">
+                        </figure>
+                        <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in in voluptate velit es</p>
+                    </a> <a href="#" class="btn btn--pink article__more">More</a>
 
                 </article>
+
+                <article class="article article--flex">
+                    <a href="" class="article__link">
+                        <header class="article__header">
+                            <h1>Third title</h1>
+                            <p>
+                                <time itemprop="datePublished" datetime="2016-04-01">2 days ago</time>
+                            </p>
+                        </header>
+                        <figure class="article__figure">
+                            <img src="/img/f3.jpg" alt="Lorem ipsum" class="article__img">
+                        </figure>
+                        <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprure denderit in voluptate velit es</p>
+                        <a href="#" class="btn btn--pink article__more">More</a>
+                    </a>
+                </article>
+
             </div>
-
         </section>
     </main>
-
 
     <footer class="main-footer">
         coś

@@ -2,8 +2,10 @@
 Home
 =============================================*/
 
-.article {
-    &__header {
-        color: $brand-color-1;
+.about {
+    font-size: 1.2rem;
+    &__figure {
+        margin: 0;
+        text-align: center;
     }
 }

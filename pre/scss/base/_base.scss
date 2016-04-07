@@ -9,11 +9,15 @@ Base
 
 html {
     box-sizing: border-box;
+    color: $text-color;
 }
 
 a {
     transition: 0.3s;
+    text-decoration: none;
     &:hover {
         transition: 0.5s;
+        
     }
 }
+

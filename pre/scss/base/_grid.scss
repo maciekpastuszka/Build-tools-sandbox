@@ -20,7 +20,14 @@ Grid
         content: '';
         display: table;
     }
+    &--flex {
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        flex-wrap: wrap;
+    }
 }
+
 
 $cels: 12;
 $i: 1;
@@ -53,6 +60,14 @@ $sum: '.m-1, .t-1, .d-1,';
 @include rwd(medium) {
     @for $i from 1 through $cels {
         .d-#{$i} {
+            width: (100% / 12) * $i;
+        }
+    }
+}
+
+@include rwd(large) {
+    @for $i from 1 through $cels {
+        .l-#{$i} {
             width: (100% / 12) * $i;
         }
     }

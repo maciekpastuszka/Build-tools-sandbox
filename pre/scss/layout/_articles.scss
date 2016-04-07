@@ -1,0 +1,44 @@
+/*=============================================
+Articles
+=============================================*/
+
+.article {
+    &__header {
+        h1 {
+            color: $brand-color-1;
+            margin-bottom: 0.3em;
+        }
+        p {
+            margin: 10px 0;
+        }
+    }
+    &__figure {
+        margin: 0;
+        max-height: 250px;
+        overflow: hidden;
+        @include rwd(small) {
+            max-height: 150px;
+        }
+    }
+    &__img {
+        max-width: 100%;
+        width: 100%;
+    }
+    &--flex {
+        padding: 0 15px;
+        flex: 1 300px;
+        display: flex;
+        flex-direction: column;
+        .article__more {
+            margin-top: auto;
+        }
+    }
+    &__link {
+        color: $text-color;
+        &:hover {
+            .article__img {
+                opacity: 0.8;
+            }
+        }
+    }
+}
