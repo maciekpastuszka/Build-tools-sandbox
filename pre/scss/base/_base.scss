@@ -12,7 +12,7 @@ html {
     color: $text-color;
 }
 
-a {
+a, button {
     transition: 0.3s;
     text-decoration: none;
     &:hover {

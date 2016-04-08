@@ -9,8 +9,8 @@
         Boilerplate
     </title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
 
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <nav class="main-nav" role="navigation">
+    <nav class="main-nav" >
         <div class="container">
             <a href="/index.php" class="main-nav__logo">Logo title</a>
             <a class="main-nav__toggle">
@@ -29,7 +29,7 @@
             </a>
 
             <div class="main-nav__colapse">
-                <ul class="main-nav__list">
+                <ul class="main-nav__list" role="navigation">
                     <li class="main-nav__item"><a href="/">About us</a></li>
                     <li class="main-nav__item"><a href="/">Contact</a></li>
                 </ul>
@@ -37,13 +37,13 @@
         </div>
     </nav>
 
-    <header class="main-header">
+    <header class="main-header" role="banner">
         <div class="container">
             <h1>Boilerplate title!</h1>
             <p>Awesome boilerplate description!</p>
             <div class="main-header__buttons">
-                <a href="#" class="btn btn--transparent">See more</a>
-                <a href="#" class="btn btn--fill">About</a>
+                <button href="#" class="btn btn--transparent" role="button">See more</button>
+                <a href="#" class="btn btn--fill" role="link">About</a>
             </div>
         </div>
     </header>
@@ -52,7 +52,7 @@
         <section class="about padding">
             <article class="container about__container">
                 <figure class="about__figure m-12 t-6 d-4">
-                    <img src="/img/about.jpg" alt="O nas" class="img--circle img--responsive">
+                    <img src="img/about.jpg" alt="O nas" class="img--circle img--responsive">
                 </figure>
                 <div class="m-12 t-6 d-8">
                     <header class="about__title">
@@ -62,7 +62,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborm dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ce c</p>
 
                     <p>isi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esm dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cse c</p>
-                    <a href="#" class="btn btn--pink">More</a>
+                    <a href="#" class="btn btn--pink"  role="link">More</a>
                 </div>
             </article>
         </section>
@@ -95,8 +95,8 @@
             <h1 class="section__title">Flex</h1>
             <div class="container container--flex">
 
-                <article class="article article--flex">
-                    <a href="" class="article__link">
+                <article class="article article--flex" role="article">
+                    <a href="" class="article__link" role="link">
                         <header class="article__header">
                             <h1>Title</h1>
                             <p>
@@ -106,17 +106,17 @@
 
                         <figure class="article__figure">
                             <picture>
-                                <source media="(min-width: 768px)" srcset="/img/f2-2x.jpg">
-                                <img src="/img/f2.jpg" alt="Lorem ipsum" class="article__img">
+                                <source media="(min-width: 768px)" srcset="img/f2-2x.jpg">
+                                <img src="img/f2.jpg" alt="Lorem ipsum" class="article__img">
                             </picture>
                         </figure>
                         <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprureenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprure denderit in denderit in voluptate velit es</p>
 
-                        <a href="#" class="btn btn--pink article__more">More</a> </a>
+                        <a href="#" class="btn btn--pink article__more" role="link">More</a> </a>
                 </article>
 
-                <article class="article article--flex">
-                    <a href="" class="article__link">
+                <article class="article article--flex" role="article">
+                    <a href="" class="article__link" role="link">
                         <header class="article__header">
                             <h1>Other title</h1>
                             <p>
@@ -124,15 +124,15 @@
                             </p>
                         </header>
                         <figure class="article__figure">
-                            <img src="/img/f1.jpg" alt="Lorem ipsum" class="article__img">
+                            <img src="img/f1.jpg" alt="Lorem ipsum" class="article__img">
                         </figure>
                         <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in in voluptate velit es</p>
-                    </a> <a href="#" class="btn btn--pink article__more">More</a>
+                    </a> <a href="#" class="btn btn--pink article__more"  role="link">More</a>
 
                 </article>
 
-                <article class="article article--flex">
-                    <a href="" class="article__link">
+                <article class="article article--flex" role="article">
+                    <a href="" class="article__link" role="link">
                         <header class="article__header">
                             <h1>Third title</h1>
                             <p>
@@ -140,10 +140,10 @@
                             </p>
                         </header>
                         <figure class="article__figure">
-                            <img src="/img/f3.jpg" alt="Lorem ipsum" class="article__img">
+                            <img src="img/f3.jpg" alt="Lorem ipsum" class="article__img">
                         </figure>
                         <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprure denderit in voluptate velit es</p>
-                        <a href="#" class="btn btn--pink article__more">More</a>
+                        <a href="#" class="btn btn--pink article__more"  role="link">More</a>
                     </a>
                 </article>
 
@@ -151,8 +151,23 @@
         </section>
     </main>
 
-    <footer class="main-footer">
-        coś
+    <footer class="main-footer clearfix">
+ 
+
+            <div class="main-footer__social">
+         
+            <a href="https://www.facebook.com/maciekpastuszka" target="_blank" role="link"><i class="social-icon social-icon--facebook">https://www.facebook.com/maciekpastuszka</i></a>
+          
+            </div>
+                <dl class="main-footer__contact">
+                    <dd><strong>Maciej Pastuszka</strong></dd>
+                    <dd>maciexxj.paxxstuszka@gmail.com</dd>
+                    <dd>123 321 123</dd>
+                </dl>
+
+           
+
+        
     </footer>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

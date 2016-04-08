@@ -3,6 +3,39 @@ Footer
 =============================================*/
 
 .main-footer {
-    background: $brand-color-1;
+    display: flex;
+    padding: 30px 0;
     border-top: 50px solid darken($brand-color-1, 10%);
+    background: $brand-color-1;
+    color: #fff;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    &__contact {
+        display: inline-block;
+        padding: 0 15px;
+        dd {
+            margin: 5px 0;
+        }
+    }
+    &__social {
+        padding: 0 15px;
+        text-align: center;
+    }
+}
+
+.social-icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-indent: -9000px;
+    transition: 0.3s;
+    &--facebook {
+        @include retina(icon-fb, png, 50px, 50px);
+    }
+    &:hover {
+        opacity: 0.8;
+        transition: 0.5s;
+    }
 }

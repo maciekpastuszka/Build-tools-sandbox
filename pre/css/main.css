@@ -363,10 +363,10 @@ html {
   box-sizing: border-box;
   color: #222222; }
 
-a {
+a, button {
   transition: 0.3s;
   text-decoration: none; }
-  a:hover {
+  a:hover, button:hover {
     transition: 0.5s; }
 
 /*=============================================
@@ -570,21 +570,11 @@ Img
 Main Header
 =============================================*/
 .main-header {
+  background-image: url("../img/bg.svg");
+  background-attachment: fixed;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("../img/bg.svg");
-  background-size: cover;
-  background-attachment: fixed; }
-  @media only screen and (min-width: 768px) {
-    .main-header {
-      background-image: url("../img/bg-t.svg");
-      background-size: cover;
-      background-attachment: fixed; } }
-  @media only screen and (min-width: 1200px) {
-    .main-header {
-      background-image: url("../img/bg-d.svg");
-      background-size: cover;
-      background-attachment: fixed; } }
+  background-size: cover; }
   .main-header p {
     color: #fff; }
   .main-header h1 {
@@ -833,8 +823,46 @@ Articles
 Footer
 =============================================*/
 .main-footer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 30px 0;
+  border-top: 50px solid #b2003e;
   background: #e50050;
-  border-top: 50px solid #b2003e; }
+  color: #fff;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .main-footer__contact {
+    display: inline-block;
+    padding: 0 15px; }
+    .main-footer__contact dd {
+      margin: 5px 0; }
+  .main-footer__social {
+    padding: 0 15px;
+    text-align: center; }
+
+.social-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-indent: -9000px;
+  transition: 0.3s; }
+  .social-icon--facebook {
+    background-image: url("../img/icon-fb.png"); }
+    @media (min-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+      .social-icon--facebook {
+        background-image: url("../img/icon-fb-2x.png");
+        background-size: 50px 50px; } }
+  .social-icon:hover {
+    opacity: 0.8;
+    transition: 0.5s; }
 
 /*=============================================
 .alert Alerts
@@ -857,6 +885,7 @@ Footer
 .btn Buttons
 =============================================*/
 .btn {
+  cursor: pointer;
   display: block;
   margin: 30px auto 0;
   padding: 10px 16px;
@@ -906,6 +935,22 @@ Section title
     background-color: #e50050;
     color: #e50050;
     content: " "; }
+
+/*=============================================
+Scrollbar
+=============================================*/
+::-webkit-scrollbar {
+  width: 10px; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #e50050;
+  border-radius: 0; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b2003e; }
+
+::-webkit-scrollbar-track {
+  background-color: transparent; }
 
 /*=============================================
 Cookies
