@@ -2,7 +2,7 @@
 Helpers
 =============================================*/
 
-.clearfix::after {
+.clearfix {
     clear: both;
     content: '';
     display: table;
