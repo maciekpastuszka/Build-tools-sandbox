@@ -1,15 +1,22 @@
-//nawigacja
-$(".main-nav").on("click", ".main-nav__toggle", function () {
-    $(this).toggleClass("is-open");
-    $(".main-nav__colapse").toggleClass("is-open");
-});
+(function () {
+    //mobile navigation toggle
+    var nav_toggle = document.querySelector(".main-nav__toggle"),
+        nav = document.querySelector(".main-nav__colapse");
 
-//chowanie menu
-$(window).scroll(function (e) {
-    var scroll = $(window).scrollTop();
-    if (scroll >= 20) {
-        $(".main-nav").addClass("is-move");
-    } else {
-        $(".main-nav").removeClass("is-move")
-    }
-});
+    nav_toggle.addEventListener("click", function () {
+        this.classList.toggle("is-open");
+        nav.classList.toggle("is-open");
+    });
+
+    //menu on scroll
+    window.addEventListener("scroll", function () {
+        var main_nav = document.querySelector(".main-nav"),
+            scroll = document.body.scrollTop;
+        
+        if (scroll >= 20) {
+            main_nav.classList.add("is-move");
+        } else {
+            main_nav.classList.remove("is-move");
+        }
+    });
+}());
