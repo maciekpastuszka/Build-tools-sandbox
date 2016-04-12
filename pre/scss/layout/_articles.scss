@@ -9,12 +9,12 @@ Articles
             margin-bottom: 0.3em;
         }
         p {
-            margin: 10px 0;
+            margin: 0.6em 0;
         }
     }
     &__figure {
         margin: 0;
-        max-height: 250px;
+        max-height: 15rem;
         overflow: hidden;
         @include rwd(small) {
             max-height: 150px;
@@ -25,8 +25,8 @@ Articles
         width: 100%;
     }
     &--flex {
-        padding: 0 15px;
-        flex: 1 300px;
+        padding: 0 1em;
+        flex: 1 19em;
         display: flex;
         flex-direction: column;
         .article__more {

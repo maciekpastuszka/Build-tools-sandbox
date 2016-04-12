@@ -36,6 +36,6 @@ $dark-grey: rgb(68, 68, 68) !default;
 /// @type Length
 
 ///Breakpoints
-$rwd-small: 768px;
-$rwd-medium: 992px;
-$rwd-large: 1200px;
+$rwd-small: 48em; //768px;
+$rwd-medium: 62em; //992px;
+$rwd-large: 75em; //1200px;

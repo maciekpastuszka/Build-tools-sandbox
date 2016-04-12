@@ -3,8 +3,8 @@
 =============================================*/
 
 .alert {
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 1em;
+    padding: 1em;
     border: 1px solid transparent;
     border-radius: 4px;
     &--warning {
@@ -27,9 +27,9 @@
 .btn {
     cursor: pointer;
     display: block;
-    margin: 30px auto 0;
-    padding: 10px 16px;
-    max-width: 200px;
+    margin: 2em auto 0;
+    padding: 0.6em 1em;
+    max-width: 12em;
     border-radius: 0px;
     text-align: center;
     text-decoration: none;
@@ -87,8 +87,8 @@ Section title
     font-size: 2.5em;
     &:after {
         display: block;
-        margin: 20px auto;
-        max-width: 180px;
+        margin: 1.25rem auto;
+        max-width: 11rem;
         height: 3px;
         background-color: $brand-color-1;
         color: $brand-color-1;
@@ -101,7 +101,7 @@ Scrollbar
 =============================================*/
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 0.6em;
 }
 
 ::-webkit-scrollbar-thumb {

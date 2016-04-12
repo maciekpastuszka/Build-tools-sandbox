@@ -29,13 +29,13 @@ section {
         background: $light-grey;
     }
     &.padding {
-        padding: 30px 0 50px 0;
+        padding: 2em 0 3em 0;
         @include rwd(small) {
-            padding: 60px 0 100px 0;
+            padding: 4em 0 6em 0;
         }
     }
     &.padding-small {
-        padding: 30px 0 50px 0;
+        padding: 2em 0 3em 0;
     }
 }
 

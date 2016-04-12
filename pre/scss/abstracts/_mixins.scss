@@ -31,6 +31,7 @@ Retina
 
 @mixin retina($file, $type, $width, $height) {
     background-image: url('../img/' + $file + '.' + $type);
+       background-size: $width $height;
     @media (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
         & {
             background-image: url('../img/' + $file + '-2x.' + $type);

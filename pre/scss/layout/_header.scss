@@ -17,26 +17,26 @@ Main Header
         font-size: 3rem;
     }
     .container {
-        padding: 100px 20px 40px 20px;
+        padding: 6em 1.25em 3em 1.25em;
         text-align: center;
 
         @include rwd(small) {
-            padding: 20vh 0 40px;
+            padding: 20vh 0 3em;
         }
     }
     &__buttons {
         display: inline-block;
-        margin: 40px auto;
+        margin: 3em auto;
         .btn {
-            margin: 0px;
-            margin-bottom: 10px;
+            margin: 0;
+            margin-bottom: 0.6em;
 
             @include rwd(small) {
                 display: inline-block;
             }
             &:first-child {
                 @include rwd(small) {
-                    margin-right: 10px;
+                    margin-right: 0.6em;
                 }
             }
         }

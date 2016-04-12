@@ -7,13 +7,13 @@ Grid
     margin: 0 auto;
     box-sizing: border-box;
     @include rwd(small) {
-        max-width: $rwd-small - 50px;
+        max-width: $rwd-small - 3em;
     }
     @include rwd(medium) {
-        max-width: $rwd-medium - 50px;
+        max-width: $rwd-medium - 3em;
     }
     @include rwd(large) {
-        max-width: $rwd-large - 50px;
+        max-width: $rwd-large - 3em;
     }
     &:after {
         clear: both;
@@ -39,7 +39,7 @@ $sum: '.m-1, .t-1, .d-1,';
 
 #{$sum} {
     float: left;
-    padding: 0 15px;
+    padding: 0 1em;
     box-sizing: border-box;
 }
 

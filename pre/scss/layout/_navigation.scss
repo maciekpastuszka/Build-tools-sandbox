@@ -17,25 +17,25 @@
         opacity: 0;
     }
     to {
-        padding: 10px 0;
+        padding: 0.6em 0;
         opacity: 1;
     }
 }
 
 .main-nav {
     position: fixed;
-    top: 0px;
+    top: 0;
     z-index: 9999;
-    padding: 40px 0;
+    padding: 3em 0;
     width: 100%;
     background-color: #232731;
     transition: 0.3s;
     @include rwd(medium) {
-        padding: 40px 0;
+        padding: 2.5em 0;
         background-color: transparent;
         &.is-move {
             top: 0px;
-            padding: 30px 0;
+            padding: 2em 0;
             background-color: #232731;
             color: #fff;
             transition: 0.3s;
@@ -48,7 +48,7 @@
     }
     &__logo {
         position: absolute;
-        margin: 0 25px;
+        margin: 0 1em;
         width: 70px;
         height: 50px;
         background-position: 0px 0px;
@@ -63,18 +63,18 @@
     }
     &__toggle {
         position: absolute;
-        top: 30px;
-        right: 25px;
+        top: 2.2em;
+        right: 2em;
         z-index: 9999;
-        padding: 10px 0 10px 0;
+        padding: 0.6em 0 0.6em 0;
         cursor: pointer;
         span:after {
             position: absolute;
-            bottom: 0px;
+            bottom: 0;
         }
         span:before {
             position: absolute;
-            top: 0px;
+            top: 0;
         }
         @include rwd(medium) {
             display: none;
@@ -83,7 +83,7 @@
         span:after,
         span:before {
             display: block;
-            width: 35px;
+            width: 2em;
             height: 3px;
             background: #fff;
             content: "";
@@ -103,8 +103,8 @@
     }
     &__colapse {
         position: fixed;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         z-index: 999;
         display: none;
         width: 100%;
@@ -128,7 +128,7 @@
     &__list {
         position: absolute;
         top: 45%;
-        padding-left: 0px;
+        padding-left: 0;
         width: 100%;
         text-align: center;
         transform: translateY(-50%);
@@ -143,15 +143,15 @@
     &__item {
         display: block;
         font-size: 1.7rem;
-        padding: 10px 0;
+        padding: 0.6em 0;
         @include rwd(medium) {
             display: inline-block;
-            font-size: 16px;
-            padding: 0 15px;
+            font-size: 1em;
+            padding: 0 1em;
         }
         a {
             position: relative;
-            padding-right: 0px;
+            padding-right: 0;
             color: #fff;
             text-decoration: none;
             &:hover {
