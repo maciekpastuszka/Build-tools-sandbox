@@ -26,8 +26,8 @@
 
 .btn {
     cursor: pointer;
-    display: block;
-    margin: 2em auto 0;
+    display: inline-block;
+    margin: 0.5em 0;
     padding: 0.6em 1em;
     max-width: 12em;
     border-radius: 0px;
@@ -42,8 +42,8 @@
         text-decoration: none;
     }
     &--fill {
-        border: 1px solid $brand-color-1;
-        background: $brand-color-1;
+        border: 1px solid $brand-color-2;
+        background: $brand-color-2;
         color: #fff;
         &:hover,
         &:focus,
@@ -56,14 +56,16 @@
         border: 1px solid #fff;
         background: transparent;
         color: #fff;
+        text-shadow: 0 0 4px #000000;
         &:hover,
         &:focus,
         &:active {
+            text-shadow: none;
             border: 1px solid $brand-color-1;
             background: $brand-color-1;
         }
     }
-    &--pink {
+    &--green-t {
         border: 1px solid $brand-color-1;
         background: transparent;
         color: $brand-color-1;
@@ -75,26 +77,85 @@
             color: #fff;
         }
     }
+    &--green {
+        border: 1px solid $brand-color-1;
+        background: $brand-color-1;
+        color: #fff;
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid $brand-color-1;
+            background: transparent;
+            color: $brand-color-1;
+        }
+    }
+    &--pink-t {
+        border: 1px solid $brand-color-2;
+        background: transparent;
+        color: $brand-color-2;
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid $brand-color-2;
+            background: $brand-color-2;
+            color: #fff;
+        }
+    }
+    &--pink {
+        border: 1px solid $brand-color-2;
+        background: $brand-color-2;
+        color: #fff;
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid $brand-color-2;
+            background: transparent;
+            color: $brand-color-2;
+        }
+    }
 }
 
 
 /*=============================================
-Section title
+icons
 =============================================*/
 
-.section__title {
-    text-align: center;
-    font-size: 2.5em;
-    &:after {
-        display: block;
-        margin: 1.25rem auto;
-        max-width: 11rem;
-        height: 3px;
-        background-color: $brand-color-1;
-        color: $brand-color-1;
-        content: " ";
+.icon {
+    display: block;
+    margin: 0 auto;
+    width: 2.5em;
+    height: 2.5em;
+    text-indent: -9000px;
+    transition: 0.3s;
+    @include rwd(small) {
+        width: 1.6em;
+        height: 1.6em;
     }
+    &:hover {
+        opacity: 0.6;
+        transition: 0.5s;
+    }
+    &--facebook {
+        background: url('../img/icons/icon_facebook.svg');
+        background-size: 100%;
+    }
+    
+       &--phone {
+        background: url('../img/icons/icon_phone.svg');
+        background-size: 100%;
+    }
+    
+       &--mail {
+        background: url('../img/icons/icon_mail.svg');
+        background-size: 100%;
+    }
+       &--arrow {
+        background: url('../img/icons/icon_arrow.svg');
+        background-size: 100%;
+    }
+
 }
+
 
 /*=============================================
 Scrollbar

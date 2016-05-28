@@ -21,147 +21,113 @@
 </head>
 
 <body>
-    <nav class="main-nav" >
+    <nav class="main-nav">
         <div class="container">
-            <a href="/index.php" class="main-nav__logo">Logo title</a>
-            <a class="main-nav__toggle">
+            <a href="/" class="main-nav__logo">Logo title</a>
+            <button class="main-nav__toggle">
                 <span></span>
-            </a>
+            </button>
 
             <div class="main-nav__colapse">
+
                 <ul class="main-nav__list" role="navigation">
-                    <li class="main-nav__item"><a href="/">About us</a></li>
-                    <li class="main-nav__item"><a href="/">Contact</a></li>
+                    <li class="main-nav__item"><a href="/">Home</a></li>
+                    <li class="main-nav__item"><a href="/">About</a></li>
+                    <li class="main-nav__item"><a href="#ccontact">Contact</a></li>
+                </ul>
+                <ul class="main-nav__social">
+                    <li class="main-nav__icon"><a href="" target="_blank"><i class="icon icon--facebook">Facebook</i></a></li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="main-header" role="banner">
-        <div class="container">
-            <h1>Boilerplate title!</h1>
-            <p>Awesome boilerplate description!</p>
-            <div class="main-header__buttons">
-                <button href="#" class="btn btn--transparent" role="button">See more</button>
-                <a href="#" class="btn btn--fill" role="link">About</a>
+    <header class="header" role="banner">
+        <div class="header__container">
+            <div class="header__title">
+                <h1>Title</h1>
+                <h2>Description</h2>
+                <div class="loader">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="header__buttons">
+                <a class="btn btn--transparent" role="link"> About</a>
+                <button class="btn btn--fill" role="button"> More</button>
             </div>
         </div>
     </header>
 
+
     <main>
-        <section class="about padding">
-            <article class="container about__container">
-                <figure class="about__figure m-12 t-6 d-4">
-                    <img src="img/about.jpg" alt="O nas" class="img--circle img--responsive">
+        <section class="main-about padding gray">
+            <div class="container">
+                <figure class="d-4 t-6 is-mobile-hidden">
+                    <picture>
+                        <img src="<? echo get_template_directory_uri(); ?>/img/f2.jpg" alt="About" class="is-circle is-responsive">
+                    </picture>
                 </figure>
-                <div class="m-12 t-6 d-8">
-                    <header class="about__title">
+
+
+                <article class="d-5 t-6">
+                    <header>
                         <h2>About</h2>
                     </header>
+                    <?php  echo get_post_meta(8, 'main', true);  ?>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborm dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ce c</p>
 
-                    <p>isi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esm dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cse c</p>
-                    <a href="#" class="btn btn--pink"  role="link">More</a>
-                </div>
-            </article>
-        </section>
+                        <button class="btn btn--pink-t" role="button"> CV</button>
 
-        <section class="grid padding-small gray">
-            <h1 class="section__title">Grid</h1>
-            <div class="container">
-                <div class="m-12 t-6 d-3">
-                    <div class="grid__element">
-                        <h2 class="grid__title">I'm grid element</h2>
-                        <p>Lorem ipsum</p>
-                    </div>
-                </div>
-                <div class="m-12 t-6 d-3">
-                    <div class="grid__element">
-                        <h2 class="grid__title">I'm another element</h2>
-                        <p>Lorem ipsum</p>
-                    </div>
-                </div>
-                <div class="m-12 t-12 d-6">
-                    <div class="grid__element">
-                        <h2 class="grid__title">I'm big grid element</h2>
-                        <p>Lorem ipsum, dolor sit</p>
-                    </div>
-                </div>
+
+                </article>
             </div>
         </section>
 
-        <section class="articles padding-small">
-            <h1 class="section__title">Flex</h1>
-            <div class="container container--flex">
+        <section class="about padding">
+            <div class="container">
 
-                <article class="article article--flex" role="article">
-                    <a href="" class="article__link" role="link">
-                        <header class="article__header">
-                            <h1>Title</h1>
-                            <p>
-                                <time itemprop="datePublished" datetime="2016-04-01">2 days ago</time>
-                            </p>
-                        </header>
 
-                        <figure class="article__figure">
-                            <picture>
-                                <source media="(min-width: 768px)" srcset="img/f2-2x.jpg">
-                                <img src="img/f2.jpg" alt="Lorem ipsum" class="article__img">
-                            </picture>
-                        </figure>
-                        <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprureenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprure denderit in denderit in voluptate velit es</p>
+                <header>
+                    <h2 class="section__title">Section title</h2>
+                </header>
 
-                        <a href="#" class="btn btn--pink article__more" role="link">More</a> </a>
+                <picture class="d-4 t-6 m-12">
+                    <img src="<? echo get_template_directory_uri(); ?>/img/about.jpg" alt="About me" class="is-circle is-responsive">
+                </picture>
+
+                <article class="about__article d-7 t-6 m-12">
+
+                    <p>Lorem ipsum dolor <strong>sit amet, consectetur adipiscing </strong>elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos re veritatis et quasi</p>
+                    <p> architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur <strong>aut odit aut fugit, sed </strong>quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia n User interfaces User oriented Team player</p>
+
+
+                    <button class="btn btn--green-t" role="button"> Realizations</button>
+                    <button class="btn btn--pink-t" role="button"> CV</button>
                 </article>
-
-                <article class="article article--flex" role="article">
-                    <a href="" class="article__link" role="link">
-                        <header class="article__header">
-                            <h1>Other title</h1>
-                            <p>
-                                <time itemprop="datePublished" datetime="2016-04-01">2 days ago</time>
-                            </p>
-                        </header>
-                        <figure class="article__figure">
-                            <img src="img/f1.jpg" alt="Lorem ipsum" class="article__img">
-                        </figure>
-                        <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in in voluptate velit es</p>
-                    </a> <a href="#" class="btn btn--pink article__more"  role="link">More</a>
-
-                </article>
-
-                <article class="article article--flex" role="article">
-                    <a href="" class="article__link" role="link">
-                        <header class="article__header">
-                            <h1>Third title</h1>
-                            <p>
-                                <time itemprop="datePublished" datetime="2016-04-01">2 days ago</time>
-                            </p>
-                        </header>
-                        <figure class="article__figure">
-                            <img src="img/f3.jpg" alt="Lorem ipsum" class="article__img">
-                        </figure>
-                        <p class="article__description">si ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vquip ex ea commodo consequat. Duis aute irure dolor inrehenderit in voluprure denderit in voluptate velit es</p>
-                        <a href="#" class="btn btn--pink article__more"  role="link">More</a>
-                    </a>
-                </article>
-
             </div>
         </section>
     </main>
-
-    <footer class="main-footer">
-            <div class="main-footer__social">
-            <a href="https://www.facebook.com/maciekpastuszka" target="_blank" role="link"><i class="social-icon social-icon--facebook">https://www.facebook.com/maciekpastuszka</i></a>
+    
+    
+    <footer class="footer" id="contact">
+        <div class="container">
+            <h2 class="section__title">Contact</h2>
+            <div class="footer__contact">
+                <span><i class="icon icon--phone"></i> +48 123 123 123</span>
+                <span><i class="icon icon--mail"></i> <a href="mailto:maciej.pastuszka@gmail.com">maciej.pastuszka@gmail.com</a></span>
             </div>
-                <dl class="main-footer__contact">
-                    <dd><strong>Maciej Pastuszka</strong></dd>
-                    <dd>maciexxj.paxxstuszka@gmail.com</dd>
-                    <dd>123 321 123</dd>
-                </dl>
+            <ul class="footer__social">
+                <li class="footer__icon"><a href="https://www.facebook.com/maciekpastuszka" target="_blank"><i class="icon icon--facebook"></i> Facebook</a></li>
 
+            </ul>
+        </div>
+        <div class="footer__copy">
+            <button class="footer__top"><i class="icon icon--arrow"></i></button>© 2016 | Maciej Pastuszka
+        </div>
     </footer>
+
     <script src="js/scripts.js"></script>
 </body>
 

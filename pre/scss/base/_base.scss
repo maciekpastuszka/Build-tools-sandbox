@@ -21,3 +21,21 @@ a, button {
     }
 }
 
+a {
+    color: $brand-color-1;
+    &:hover {
+        color: $brand-color-2;
+    }
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    &:active {
+         outline: none;   
+    }
+}
+
+picture {
+    text-align: center;
+}

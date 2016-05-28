@@ -2,40 +2,62 @@
 Footer
 =============================================*/
 
-.main-footer {
-    display: flex;
-    padding: 2rem 0;
-    border-top: 3em solid darken($brand-color-1, 10%);
-    background: $brand-color-1;
+.footer {
+    font-size: 1.3rem;
     color: #fff;
-
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
+    @include section-bg('contact', 'jpg');
+    a {
+        color: #fff;
+        &:hover {
+            color: $brand-color-1;
+        }
+    }
+    .container {
+        padding: 2em 0.5em;
+    }
     &__contact {
-        display: inline-block;
-        padding: 0 1em;
-        dd {
-            margin: 0.5em 0;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        font-size: 1.5em;
+        span {
+            display: flex;
+            align-items: center;
+            padding: 0 0.5em;
+        }
+        .icon {
+            display: inline-block;
+            height: 1em;
+            width: 1em;
+            margin: 0 0.2em;
+            
         }
     }
     &__social {
-        padding: 0 1em;
-        text-align: center;
+        padding: 0;
     }
-}
-
-.social-icon {
-    display: inline-block;
-    width: 3em;
-    height: 3em;
-    text-indent: -9000px;
-    transition: 0.3s;
-    &--facebook {
-        @include retina(icon-fb, png, 3em, 3em);
+    &__icon {
+        display: inline-block;
+        min-width: 4em;
+        padding: 0.5em;
+        i {
+            margin-bottom: 0.5em;
+        }
     }
-    &:hover {
-        opacity: 0.8;
-        transition: 0.5s;
+    &__copy {
+        position: relative;
+        background: $brand-color-1;
+        padding: 1.5em;
+    }
+    &__top {
+        position: absolute;
+        top: -1.5em;
+        right: 2em;
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        background: $brand-color-2;
+        border: none;
     }
 }

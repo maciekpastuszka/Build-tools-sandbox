@@ -2,6 +2,7 @@
 .main-nav Main navigation
 =============================================*/
 
+
 @keyframes bgmenu {
     from {
         background: rgba(0, 0, 0, 0.5);
@@ -12,11 +13,15 @@
 }
 
 @keyframes menulinks {
-    from {
+    0% {
         padding: 0 0;
         opacity: 0;
     }
-    to {
+    60% {
+        padding: 0 0;
+        opacity: 0;
+    }
+    100% {
         padding: 0.6em 0;
         opacity: 1;
     }
@@ -26,9 +31,7 @@
     position: fixed;
     top: 0;
     z-index: 9999;
-    padding: 3em 0;
     width: 100%;
-    background-color: #232731;
     transition: 0.3s;
     @include rwd(medium) {
         padding: 2.5em 0;
@@ -36,37 +39,40 @@
         &.is-move {
             top: 0px;
             padding: 2em 0;
-            background-color: #232731;
+            background-color: #212121;
             color: #fff;
             transition: 0.3s;
             .main-nav__logo {
                 background-position: 0px 50px;
                 transition: 0.3s;
-                transform: translateY(-15px);
             }
         }
     }
     &__logo {
         position: absolute;
+        top: 1.3em;
         margin: 0 1em;
         width: 70px;
         height: 50px;
         background-position: 0px 0px;
         text-indent: -900px;
         transition: 0.3s;
-        transform: translateY(-25px);
         @include retina(logo, png, 70px, 50px);
         @include rwd(medium) {
             background-position: 0px 0px;
-            transform: translateY(-15px);
         }
     }
     &__toggle {
         position: absolute;
-        top: 2.2em;
-        right: 2em;
+        top: 1.2em;
+        right: 1em;
         z-index: 9999;
-        padding: 0.6em 0 0.6em 0;
+        padding: 0.6em 0;
+        outline: none;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        background: rgba(191, 52, 72, 0.9);
         cursor: pointer;
         span:after {
             position: absolute;
@@ -79,15 +85,24 @@
         @include rwd(medium) {
             display: none;
         }
+        span {
+            margin-right: 0.7em;
+            margin-left: 0.7em;
+        }
         span,
         span:after,
         span:before {
             display: block;
+            margin-top: 1em;
+            margin-bottom: 1em;
             width: 2em;
             height: 3px;
             background: #fff;
             content: "";
             transition: 0.4s;
+        }
+        &.is-open {
+            background: none;
         }
         &.is-open span {
             background: none;
@@ -102,23 +117,21 @@
         }
     }
     &__colapse {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
         display: none;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.9);
         @include rwd(medium) {
             position: initial;
             display: inline-block;
             background: none;
         }
         &.is-open {
-            display: block;
-            animation-name: bgmenu;
-            animation-duration: 0.5s;
+            background: $brand-color-1;
+            display: flex;
+            height: 100vh;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            transition: 0.3s;
             .main-nav__item {
                 animation-name: menulinks;
                 animation-duration: 0.5s;
@@ -126,28 +139,25 @@
         }
     }
     &__list {
-        position: absolute;
-        top: 45%;
         padding-left: 0;
-        width: 100%;
         text-align: center;
-        transform: translateY(-50%);
+        flex: 1 100%;
         @include rwd(medium) {
             position: initial;
+            display: inline-block;
             margin: 0;
-            width: 100%;
-            text-align: center;
+            width: 80%;
             transform: none;
         }
     }
     &__item {
         display: block;
-        font-size: 1.7rem;
         padding: 0.6em 0;
+        font-size: 1.7rem;
         @include rwd(medium) {
             display: inline-block;
-            font-size: 1em;
             padding: 0 1em;
+            font-size: 1.2em;
         }
         a {
             position: relative;
@@ -155,8 +165,29 @@
             color: #fff;
             text-decoration: none;
             &:hover {
-                color: $brand-color-1;
+                color: $brand-color-2;
+                @include rwd(medium) {
+                    color: $brand-color-1;
+                }
             }
         }
+    }
+    &__social {
+        padding-left: 0;
+        list-style: none;
+        text-align: center;
+        flex: 1 100%;
+        @include rwd(medium) {
+            float: right;
+            margin: 0;
+            text-align: center;
+            transform: none;
+        }
+    }
+    &__icon {
+        position: relative;
+        display: inline-block;
+        margin: 0 0.2em;
+       
     }
 }

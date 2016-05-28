@@ -2,6 +2,7 @@
 Mixins
 =============================================*/
 
+
 /**
 RWD
 */
@@ -31,7 +32,7 @@ Retina
 
 @mixin retina($file, $type, $width, $height) {
     background-image: url('../img/' + $file + '.' + $type);
-       background-size: $width $height;
+    background-size: $width $height;
     @media (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
         & {
             background-image: url('../img/' + $file + '-2x.' + $type);
@@ -50,14 +51,18 @@ $type) {
     background-image: url('../img/' + $file + '.' + $type);
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
     @include rwd(small) {
         background-image: url('../img/' + $file + '-t.' + $type);
         background-size: cover;
         background-attachment: fixed;
+        background-position: center;
     }
     @include rwd(large) {
         background-image: url('../img/' + $file + '-d.' + $type);
         background-size: cover;
+        background-position: center;
         background-attachment: fixed;
     }
 }
+

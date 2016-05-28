@@ -21,21 +21,28 @@ monospace !default;
 $text-color: rgb(34, 34, 34) !default;
 /// Main brand colors
 /// @type Color
-$brand-color-1: rgb(229, 0, 80) !default;
-$brand-color-2: rgb(229, 0, 80) !default;
+//$brand-color-1: rgb(229, 0, 80) !default;
+
+//$brand-color-1: #bf3448;
+$brand-color-1: #59a13e;
+$brand-color-2: #bf3448;
+$brand-color-3: #2f8ad5;
+
+
+//$brand-color-2: rgb(229, 0, 80) !default;
 /// Light grey
 /// @type Color
-$light-grey: rgb(237, 237, 237) !default;
+$light-grey: rgb(237, 237, 237);
 /// Medium grey
 /// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
+$mid-grey: rgb(153, 153, 153);
 /// Dark grey
 /// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
+$dark-grey: rgb(68, 68, 68);
 /// Container's maximum width
 /// @type Length
 
 ///Breakpoints
-$rwd-small: 48em; //768px;
-$rwd-medium: 62em; //992px;
-$rwd-large: 75em; //1200px;
+$rwd-small: 48rem; //768px;
+$rwd-medium: 62rem; //992px;
+$rwd-large: 75rem; //1200px;
