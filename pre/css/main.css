@@ -1118,3 +1118,20 @@ Home
     flex-wrap: wrap; }
     .about__skills .icon {
       margin: 0.3em 0.1em; }
+
+.container__image {
+  border: 1px solid red;
+  width: 500px;
+  height: 300px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.img__gallery {
+  width: 100%;
+  /* or any custom size */
+  height: 100%;
+  object-fit: contain; }

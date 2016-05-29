@@ -21,4 +21,20 @@ Home
         }
     }
     
-
+    .container {
+        &__image {
+            border: 1px solid red;
+            width: 500px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    
+    .img {
+        &__gallery {
+   width: 100%; /* or any custom size */
+    height: 100%; 
+    object-fit: contain;
+        }
+    }
