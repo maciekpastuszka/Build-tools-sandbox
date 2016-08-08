@@ -1,41 +1,38 @@
 var gulp = require('gulp');
-var imagemin = require('gulp-imagemin');
+
+//css
 var minifyCSS = require('gulp-minify-css');
 var sass = require('gulp-sass');
-var browserSync = require('browser-sync').create();
 var autoprefixer = require('gulp-autoprefixer');
 
-var gutil = require('gulp-util');
-var ftp = require('gulp-ftp');
-
+//js
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 
+//other
+var browserSync = require('browser-sync').create();
+var imagemin = require('gulp-imagemin');
 var reload = browserSync.reload();
+
+/*----config ---*/
+var APP_SRC = 'app';
 
 var JS_SRC = './pre/js/*.js';
 var JS_SRC_CONCAT = './pre/js/concat/*.js';
 var JS_DEST = 'app/js';
 
 var IMG_SRC = 'pre/img/*';
-var IMG_DEST = 'app/img';
+var IMG_DEST = 'app/img'
 
 var CSS_SRC = './pre/css/*';
 var CSS_DEST = 'app/css';
 
-var SASS_SRC = './pre/scss/*.scss';
+
+var SASS_SRC = './pre/scss';
 var SASS_DEST = 'pre/css';
 
-gulp.task('deploy', function () {
-    return gulp.src('app/**')
-        .pipe(ftp({
-            host: '',
-            user: '',
-            pass: '',
-            remotePath: ''
-        }))
-        .pipe(gutil.noop());
-});
+/*----config ---*/
+
 
 gulp.task('concat', function () {
     return gulp.src(JS_SRC_CONCAT)
@@ -67,7 +64,7 @@ gulp.task('minify-css', function () {
 });
 
 gulp.task('sass', function () {
-    gulp.src(SASS_SRC)
+    gulp.src(SASS_SRC + '/*.scss')
         .pipe(sass())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -81,17 +78,21 @@ gulp.task('sass', function () {
 
 gulp.task('sync', ['sass', 'uglify', 'concat'], function () {
     browserSync.init({
-         server: {
-            baseDir: "./app"
+        server: {
+            baseDir: "./" + APP_SRC
         }
     });
-
-    gulp.watch("./pre/scss/**", ['sass']);
-    gulp.watch("./pre/scss/**").on('change', browserSync.reload);
+/*
+    browserSync.init({
+        proxy: "localhost"
+    });
+*/
+    gulp.watch(SASS_SRC + "/**", ['sass']);
+    gulp.watch(SASS_SRC + "/**").on('change', browserSync.reload);
     gulp.watch(JS_SRC, ['uglify']);
     gulp.watch(JS_SRC).on('change', browserSync.reload);
     gulp.watch(JS_SRC_CONCAT, ['concat']);
     gulp.watch(JS_SRC_CONCAT).on('change', browserSync.reload);
-    gulp.watch("./app/*").on('change', browserSync.reload);
+    gulp.watch("./" + APP_SRC + "/*").on('change', browserSync.reload);
 
 });
