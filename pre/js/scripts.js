@@ -1,25 +1,53 @@
-(function () {
-    //mobile navigation toggle
-    var nav_toggle = document.querySelector(".main-nav__toggle"),
-        nav = document.querySelector(".main-nav__colapse");
 
-    nav_toggle.addEventListener("click", function () {
-        this.classList.toggle("is-open");
-        nav.classList.toggle("is-open");
-    });
+/*==================================================
+ DOM patterns
+ *=================================================*/
 
-    //menu on scroll
-    window.addEventListener("scroll", function () {
-        var main_nav = document.querySelector(".main-nav"),
-            scroll = document.body.scrollTop;
+var menu = (function () {
+    var menu_toggle = $('.js-menu_toggle'),
+        main_nav = $('.js-main-nav');
+    var init = function () {
+        menu_toggle.on('mouseover', function () {
+            main_nav.addClass('main-nav--is-collapse');
+            menu_toggle.html(" ");
+        });
+    };
+    return {
+        init: init
+    };
+})();
 
-        if (scroll >= 20) {
-            main_nav.classList.add("is-move");
-        } else {
-            main_nav.classList.remove("is-move");
+//module
+
+var s,
+    NewsWidget = {
+        settings: {
+            numArticles: 5,
+            articleList: $("#article-list"),
+            moreButton: $("#more-button")
+        },
+
+        init: function () {
+            s = this.settings;
+            this.bindUIActions();
+        },
+
+        bindUIActions: function () {
+            s.moreButton.on("click", function () {
+                NewsWidget.getMoreArticles(s.numArticles);
+            });
+        },
+
+        getMoreArticles: function (numToGet) {
+            // $.ajax or something
+            // using numToGet as param
         }
-    });
-}());
+
+    };
+
+(function() {
+    NewsWidget.init();
+})();
 
 /*==================================================
 FUNCTIONS
