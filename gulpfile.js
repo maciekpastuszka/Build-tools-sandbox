@@ -15,17 +15,17 @@ var imagemin = require('gulp-imagemin');
 var reload = browserSync.reload();
 
 /*----config ---*/
-var APP_SRC = 'app';
+var APP_SRC = 'public';
 
 var JS_SRC = './pre/js/*.js';
 var JS_SRC_CONCAT = './pre/js/concat/*.js';
-var JS_DEST = 'app/js';
+var JS_DEST = 'public/js';
 
 var IMG_SRC = 'pre/img/*';
-var IMG_DEST = 'app/img'
+var IMG_DEST = 'public/img';
 
 var CSS_SRC = './pre/css/*';
-var CSS_DEST = 'app/css';
+var CSS_DEST = 'public/css';
 
 
 var SASS_SRC = './pre/scss';
@@ -33,6 +33,7 @@ var SASS_DEST = 'pre/css';
 
 /*----config ---*/
 
+gulp.task('default', ['sass', 'uglify', 'concat']);
 
 gulp.task('concat', function () {
     return gulp.src(JS_SRC_CONCAT)
@@ -77,16 +78,16 @@ gulp.task('sass', function () {
 
 
 gulp.task('sync', ['sass', 'uglify', 'concat'], function () {
+    //browserSync.init({
+    //    server: {
+    //        baseDir: "./" + APP_SRC
+    //    }
+    //});
+
     browserSync.init({
-        server: {
-            baseDir: "./" + APP_SRC
-        }
+        proxy: ""
     });
-/*
-    browserSync.init({
-        proxy: "localhost"
-    });
-*/
+
     gulp.watch(SASS_SRC + "/**", ['sass']);
     gulp.watch(SASS_SRC + "/**").on('change', browserSync.reload);
     gulp.watch(JS_SRC, ['uglify']);
