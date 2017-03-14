@@ -22,111 +22,16 @@
 
 <body>
     <nav class="main-nav">
-        <div class="container">
-            <a href="/" class="main-nav__logo">Logo title</a>
-            <button class="main-nav__toggle">
-                <span></span>
-            </button>
-
-            <div class="main-nav__colapse">
-
-                <ul class="main-nav__list" role="navigation">
-                    <li class="main-nav__item"><a href="/">Home</a></li>
-                    <li class="main-nav__item"><a href="/">About</a></li>
-                    <li class="main-nav__item"><a href="#ccontact">Contact</a></li>
-                </ul>
-                <ul class="main-nav__social">
-                    <li class="main-nav__icon"><a href="" target="_blank"><i class="icon icon--facebook">Facebook</i></a></li>
-
-                </ul>
-            </div>
-        </div>
     </nav>
 
     <header class="header" role="banner">
-        <div class="header__container">
-            <div class="header__title">
-                <h1>Title</h1>
-                <h2>Description</h2>
-                <div class="loader">
-                    <span></span><span></span><span></span>
-                </div>
-            </div>
-
-            <div class="header__buttons">
-                <a class="btn btn--transparent" role="link"> About</a>
-                <button class="btn btn--fill" role="button"> More</button>
-            </div>
-        </div>
     </header>
 
-
     <main>
-        <section class="main-about padding gray">
-            <div class="container">
-                <figure class="d-4 t-6 is-mobile-hidden">
-                    <picture>
-                        <img src="/img/f2.jpg" alt="About" class="is-circle is-responsive">
-                    </picture>
-                </figure>
-
-
-                <article class="d-5 t-6">
-                    <header>
-                        <h2>About</h2>
-                    </header>
-                    <?php  echo get_post_meta(8, 'main', true);  ?>
-                        <button class="btn btn--pink-t" role="button"> CV</button>
-                </article>
-            </div>
-        </section>
-
-        <section class="about padding">
-            <div class="container">
-                <header>
-                    <h2 class="section__title">Section title</h2>
-                </header>
-
-                <picture class="d-4 t-6 m-12">
-                    <img src="/img/about.jpg" alt="About me" class="is-circle is-responsive">
-                </picture>
-
-                <article class="about__article d-7 t-6 m-12">
-
-                    <p>Lorem ipsum dolor <strong>sit amet, consectetur adipiscing </strong>elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos re veritatis et quasi</p>
-                    <p> architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur <strong>aut odit aut fugit, sed </strong>quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia n User interfaces User oriented Team player</p>
-
-
-                   
-                <div class="container__image">
-                    <img src="/img/about.jpg" class="img__gallery">
-                </div> 
-                    
-                    
-                    
-                    <button class="btn btn--green-t" role="button"> Realizations</button>
-                    <button class="btn btn--pink-t" role="button"> CV</button>
-                </article>
-            </div>
-        </section>
     </main>
 
 
     <footer class="footer" id="contact">
-        <div class="container">
-            <h2 class="section__title">Contact</h2>
-            <div class="footer__contact">
-                <span><i class="icon icon--phone"></i> +48 123 123 123</span>
-                <span><i class="icon icon--mail"></i> <a href="mailto:maciej.pastuszka@gmail.com">maciej.pastuszka@gmail.com</a></span>
-            </div>
-            <ul class="footer__social">
-                <li class="footer__icon"><a href="https://www.facebook.com/maciekpastuszka" target="_blank"><i class="icon icon--facebook"></i> Facebook</a></li>
-
-            </ul>
-        </div>
-        <div class="footer__copy">
-            <button class="footer__top"><i class="icon icon--arrow"></i></button>© 2016 | Maciej Pastuszka
-        </div>
     </footer>
 
     <script src="js/scripts.js"></script>
