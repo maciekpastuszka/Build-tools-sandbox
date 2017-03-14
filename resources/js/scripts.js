@@ -19,8 +19,7 @@ var menu = (function () {
 
 //module
 
-var s,
-    NewsWidget = {
+var NewsWidget = {
         settings: {
             numArticles: 5,
             articleList: $("#article-list"),
@@ -40,7 +39,6 @@ var s,
 
         getMoreArticles: function (numToGet) {
             // $.ajax or something
-            // using numToGet as param
         }
 
     };
@@ -57,12 +55,8 @@ FUNCTIONS
 
 (function (global) {
 
-})(this)
+})(this);
 
-
-/*==================================================
-MAIN
-*=================================================*/
 
 
 /*==================================================
@@ -75,7 +69,7 @@ function Person(name) {
     this.name = name;
     this.sayName = function () {
         console.log(this.name);
-    }
+    };
 
 }
 
@@ -85,7 +79,7 @@ var person1 = new Person("Maciek");
 
 function Person(name) {
     this.name = name;
-};
+}
 
 Person.prototype = {
     constructor: Person, // person1.constructor === Person // inaczej byłby Object 
@@ -126,7 +120,7 @@ aya.framework = function () {
     // private method
     var getVersion = function () {
         return version;
-    }
+    };
 
     // all returned is a public
     return {
@@ -137,7 +131,7 @@ aya.framework = function () {
         printModuleVersion: function () {
             console.log('Version: ' + getVersion());
         }
-    }
+    };
 }();
 
 aya.framework.init();
