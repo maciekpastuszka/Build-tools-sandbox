@@ -8,6 +8,7 @@ var autoprefixer = require('gulp-autoprefixer');
 //js
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var jshint = require('gulp-jshint');
 
 //other
 var browserSync = require('browser-sync').create();
@@ -28,6 +29,8 @@ gulp.task('default', function(callback) {
 
 gulp.task('js', function () {
     return gulp.src('./js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
         .pipe(uglify({
             outSourceMap: true
         }))
@@ -36,11 +39,11 @@ gulp.task('js', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src('./img/*')
+    return gulp.src('./images/*')
         .pipe(imagemin({
             progressive: true
         }))
-        .pipe(gulp.dest('../public/img'));
+        .pipe(gulp.dest('../public/images'));
 });
 
 gulp.task('css', function () {
