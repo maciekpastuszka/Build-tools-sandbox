@@ -1,22 +1,20 @@
 @charset 'UTF-8';
 
-@import 'abstracts/variables',
-'abstracts/mixins';
+@import 'abstracts/variables';
+@import  'abstracts/mixins';
 
 @import 'vendor/normalize';
-//   'vendor/bootstrap';
 
-@import 'base/base',
-'base/fonts',
-'base/grid',
-'base/helpers';
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/grid';
+@import 'base/helpers';
 
-@import'layout/header',
-'layout/navigation',
-'layout/footer';
+@import 'layout/header';
+@import 'layout/navigation';
+@import  'layout/footer';
 
-@import 'components/other',
-'components/cookies';
+@import 'components/other';
 
 @import 'pages/home';
 

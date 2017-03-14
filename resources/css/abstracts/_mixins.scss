@@ -7,7 +7,7 @@ Mixins
 RWD
 */
 
-@mixin rwd($width) {
+@mixin breakpoint($width) {
     @if $width==small {
         @media only screen and (min-width: $rwd-small) {
             @content;
@@ -49,20 +49,11 @@ Section background
 @mixin section-bg($file,
 $type) {
     background-image: url('../img/' + $file + '.' + $type);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    @include rwd(small) {
+    @include breakpoint(small) {
         background-image: url('../img/' + $file + '-t.' + $type);
-        background-size: cover;
-        background-attachment: fixed;
-        background-position: center;
     }
-    @include rwd(large) {
+    @include breakpoint(large) {
         background-image: url('../img/' + $file + '-d.' + $type);
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
     }
 }
 

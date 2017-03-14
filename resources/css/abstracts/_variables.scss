@@ -1,48 +1,22 @@
 /*=============================================
 Variables
 =============================================*/
-/// Regular font family
-/// @type List
-$text-font-stack: 'Open Sans',
-'Helvetica Neue Light',
-'Helvetica Neue',
-'Helvetica',
-'Arial',
-sans-serif !default;
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: 'Courier New',
-'DejaVu Sans Mono',
-'Bitstream Vera Sans Mono',
-'Monaco',
-monospace !default;
-/// Copy text color
-/// @type Color
-$text-color: rgb(34, 34, 34) !default;
-/// Main brand colors
-/// @type Color
-//$brand-color-1: rgb(229, 0, 80) !default;
 
-//$brand-color-1: #bf3448;
+$text-color: #000000;
+
 $brand-color-1: #59a13e;
 $brand-color-2: #bf3448;
 $brand-color-3: #2f8ad5;
 
 
-//$brand-color-2: rgb(229, 0, 80) !default;
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237);
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153);
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68);
-/// Container's maximum width
-/// @type Length
+/*=============================================
+Breakpoints
+=============================================*/
 
-///Breakpoints
 $rwd-small: 48rem; //768px;
 $rwd-medium: 62rem; //992px;
 $rwd-large: 75rem; //1200px;
+
+/*=============================================
+Grid
+=============================================*/

@@ -2,15 +2,9 @@
 Helpers
 =============================================*/
 
-.clearfix {
-    clear: both;
-    content: '';
-    display: table;
-}
-
 .is-mobile-hidden {
     display: none;
-    @include rwd(small) {
+    @include breakpoint(small) {
         display: initial;
     }
 }
@@ -19,55 +13,3 @@ Helpers
     display: none;
 }
 
-
-/*=============================================
-Sections
-=============================================*/
-
-section {
-    &.gray {
-        background: $light-grey;
-    }
-    &.padding {
-        padding: 2em 0 3em 0;
-        @include rwd(small) {
-            padding: 4em 0 6em 0;
-        }
-    }
-    &.padding-small {
-        padding: 2em 0 3em 0;
-    }
-}
-
-
-/*=============================================
-Images
-=============================================*/
-
-img {
-    &.is-circle {
-        border-radius: 50%;
-    }
-    &.is-responsive {
-        max-width: 100%;
-        height: auto;
-    }
-}
-
-/*=============================================
-Section title
-=============================================*/
-
-.section__title {
-    text-align: center;
-    font-size: 2.5em;
-    &:after {
-        display: block;
-        margin: 1.25rem auto;
-        max-width: 5rem;
-        height: 2px;
-        background-color: $brand-color-1;
-        color: $brand-color-1;
-        content: " ";
-    }
-}

@@ -1,32 +1,20 @@
 /*=============================================
 Grid
 =============================================*/
-
-.container {
-    max-width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    @include rwd(small) {
-        max-width: $rwd-small - 3rem;
-    }
-    @include rwd(medium) {
-        max-width: $rwd-medium - 3rem;
-    }
-    @include rwd(large) {
-        max-width: $rwd-large - 3rem;
-    }
-    &:after {
-        clear: both;
-        content: '';
-        display: table;
-    }
-    &--flex {
-        display: flex;
-        flex-direction: row;
-        align-content: space-between;
-        flex-wrap: wrap;
-    }
-}
+//
+//.container {
+//    max-width: 100%;
+//    margin: 0 auto;
+//    @include rwd(small) {
+//        max-width: $rwd-small - 3rem;
+//    }
+//    @include rwd(medium) {
+//        max-width: $rwd-medium - 3rem;
+//    }
+//    @include rwd(large) {
+//        max-width: $rwd-large - 3rem;
+//    }
+//}
 
 
 $cels: 12;
@@ -49,7 +37,7 @@ $sum: '.m-1, .t-1, .d-1,';
     }
 }
 
-@include rwd(small) {
+@include breakpoint(small) {
     @for $i from 1 through $cels {
         .t-#{$i} {
             width: (100% / 12) * $i;
@@ -57,7 +45,7 @@ $sum: '.m-1, .t-1, .d-1,';
     }
 }
 
-@include rwd(medium) {
+@include breakpoint(medium) {
     @for $i from 1 through $cels {
         .d-#{$i} {
             width: (100% / 12) * $i;
@@ -65,7 +53,7 @@ $sum: '.m-1, .t-1, .d-1,';
     }
 }
 
-@include rwd(large) {
+@include breakpoint(large) {
     @for $i from 1 through $cels {
         .l-#{$i} {
             width: (100% / 12) * $i;
