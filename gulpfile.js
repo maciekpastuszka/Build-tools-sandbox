@@ -34,11 +34,13 @@ gulp.task('default', function(callback) {
 
 gulp.task('js', function () {
     return gulp.src(config.resources + '/js/*.js')
+        .pipe(sourcemaps.init())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(uglify({
             outSourceMap: true
         }))
+        .pipe(sourcemaps.write())
         .pipe(concat('scripts.js'))
         .pipe(gulp.dest('public/js'));
 });

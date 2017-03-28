@@ -2,3 +2,8 @@
 .container
 .row
  */
+
+.container {
+  @include container();
+}
+
