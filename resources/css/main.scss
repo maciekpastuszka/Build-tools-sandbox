@@ -1,20 +1,26 @@
 @charset 'UTF-8';
 
-@import 'abstracts/variables';
-@import  'abstracts/mixins';
+@import '0_settings/breakpoints';
+@import '0_settings/colors';
+@import '0_settings/fonts';
+@import '0_settings/global';
 
-@import 'vendor/normalize';
+@import '1_tools/mixins';
+@import '1_tools/rwd';
 
-@import 'base/base';
-@import 'base/fonts';
-@import 'base/grid';
-@import 'base/helpers';
+@import '2_generic/normalize';
 
-@import 'layout/header';
-@import 'layout/navigation';
-@import  'layout/footer';
+@import '3_elements/body';
+@import '3_elements/headings';
+@import '3_elements/links';
+@import '3_elements/lists';
+@import '3_elements/paragraphs';
+@import '3_elements/tables';
 
-@import 'components/other';
+@import '4_objects/grid';
+@import '4_objects/layout';
 
-@import 'pages/home';
+@import '5_components/buttons';
+@import '5_components/nav';
 
+@import '6_helpers/background-colors';
