@@ -1,0 +1,42 @@
+$i: 1;
+$sum: '.xs-1, .sm-1, .md-1, .lg-1,';
+@while $i <=$grid_columns {
+  $sum: $sum #{'.xs-'}#{$i}#{', '} #{' .sm-'}#{$i}#{', '} #{' .md-'}#{$i}#{', '}#{' .lg-'}#{$i}#{', '};
+  $i: $i + 1;
+}
+
+#{$sum} {
+  float: left;
+  padding: 0 1em;
+  box-sizing: border-box;
+}
+
+@for $i from 1 through $grid_columns {
+  .xs-#{$i} {
+    width: (100% / $grid_columns) * $i;
+  }
+}
+
+@include breakpoint(small) {
+  @for $i from 1 through $grid_columns {
+    .sm-#{$i} {
+      width: (100% / $grid_columns) * $i;
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  @for $i from 1 through $grid_columns {
+    .md-#{$i} {
+      width: (100% / $grid_columns) * $i;
+    }
+  }
+}
+
+@include breakpoint(large) {
+  @for $i from 1 through $grid_columns {
+    .lg-#{$i} {
+      width: (100% / $grid_columns) * $i;
+    }
+  }
+}
