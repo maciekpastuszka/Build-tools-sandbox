@@ -6,11 +6,9 @@ $sum: '.xs-1, .sm-1, .md-1, .lg-1,';
 }
 
 #{$sum} {
-  float: left;
   padding: 0 $grid_columns-padding;
   box-sizing: border-box;
   width: 100%;
-
 }
 
 @for $i from 1 through $grid_columns {
