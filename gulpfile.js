@@ -1,84 +1,169 @@
 var gulp = require('gulp');
 
-//css
-var minifyCSS = require('gulp-minify-css');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+/* JS */
+var tslint = require("gulp-tslint"),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    ts = require("gulp-typescript"),
+    tsProject = ts.createProject("tsconfig.json"),
+    jshint = require('gulp-jshint');
 
-//js
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var jshint = require('gulp-jshint');
+/* CSS */
+var sass = require('gulp-sass'),
+    cssnano = require('gulp-cssnano'),
+    autoprefixer = require('gulp-autoprefixer');
 
-//other
-var browserSync = require('browser-sync').create();
+/* Image */
 var imagemin = require('gulp-imagemin');
-var reload = browserSync.reload();
-var runSequence = require('run-sequence');
 
-var sourcemaps = require('gulp-sourcemaps');
+/* Icons */
+var iconfont = require('gulp-iconfont');
 
+/* Other */
+var plumber = require('gulp-plumber'),
+    sourcemaps = require('gulp-sourcemaps'),
+    size = require('gulp-size'),
+    changed = require('gulp-changed'),
+    runSequence = require('run-sequence'),
+    browserSync = require('browser-sync').create();
 
-var config = {
-    resources: 'resources'
-};
+var domain = '',
+    src = './src/',
+    dest = './public/',
+    modules = './node_modules/';
 
-gulp.task('default', function(callback) {
+gulp.task('default', function () {
     runSequence(
-        'css',
-        'js',
-        'images',
-        callback
+        ['css', 'js', 'images', 'icons'], ['fonts']
     );
 });
 
-gulp.task('js', function () {
-    return gulp.src(config.resources + '/js/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(uglify({
-            outSourceMap: true
-        }))
-        .pipe(sourcemaps.write())
-        .pipe(concat('scripts.js'))
-        .pipe(gulp.dest('public/js'));
-});
-
-gulp.task('images', function () {
-    return gulp.src(config.resources + '/images/*')
-        .pipe(imagemin({
-            progressive: true
-        }))
-        .pipe(gulp.dest('public/images'));
-});
-
 gulp.task('css', function () {
-    var stream = gulp.src(config.resources + '/css/*.scss')
+    return gulp.src(src + 'css/main.scss')
+        .pipe(plumber({
+            errorHandler: function (err) {
+                console.log(err);
+            }
+        }))
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass({
+            precision: 6,
+            onError: function (err) {
+                return console.log(err);
+            }
+        }))
         .pipe(autoprefixer({
             browsers: ['last 3 versions'],
             cascade: false
         }))
-        .pipe(minifyCSS())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('public/css'));
-    return stream;
+        .pipe(cssnano())
+        .pipe(plumber.stop())
+        .pipe(sourcemaps.write('/'))
+        .pipe(size({title: 'Styles'}))
+        .pipe(gulp.dest(dest + 'css'));
 });
 
-gulp.task('sync', ['css', 'js'], function () {
-    /*  browserSync.init({
-     proxy: 'localhost'
-     }); */
-    browserSync.init({
-        server: {
-            baseDir: 'public'
-        }
+gulp.task('js', function () {
+    runSequence('ts-scripts', 'js-scripts', function () {
+        console.log('JS finish.');
     });
-    gulp.watch(config.resources + '/css/**', ['css']);
-    gulp.watch(config.resources + '/css/**').on('change', browserSync.reload);
-    gulp.watch(config.resources + '/js/**', ['js']);
-    gulp.watch(config.resources + '/js/**').on('change', browserSync.reload);
-    gulp.watch('public/*').on('change', browserSync.reload);
 });
+
+gulp.task('js-scripts', function () {
+    return gulp.src([
+        src + 'js/script.js',
+        src + 'js/ts_temp/*.js' //compiled TS
+    ])
+        .pipe(plumber({
+            errorHandler: function (err) {
+                console.log(err);
+            }
+        }))
+        .pipe(sourcemaps.init())
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(concat('scripts.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(size({title: 'Scripts'}))
+        .pipe(plumber.stop())
+        .pipe(gulp.dest(dest + 'js'));
+});
+
+gulp.task('ts-scripts', function () {
+    return gulp.src([
+        src + 'js/main.ts'
+    ])
+        .pipe(tslint({
+            configuration: "tslint.json"
+        }))
+        .pipe(tslint.report())
+        .pipe(tsProject())
+        .js.pipe(gulp.dest(src + '/js/ts_temp'));
+});
+
+gulp.task('images', function () {
+    return gulp.src([src + 'img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)', '!'])
+        .pipe(changed(dest + 'img/'))
+        .pipe(imagemin({
+            optimizationLevel: 7,
+            progressive: true,
+            interlaced: true
+        }))
+        .pipe(gulp.dest(dest + 'img'));
+});
+
+gulp.task('fonts', function () {
+    return gulp.src([src + 'fonts/**/*(*.ttf|*.eot|*.woff|*.woff2)'])
+        .pipe(size({title: 'Fonts'}))
+        .pipe(gulp.dest(dest + 'fonts'));
+});
+
+gulp.task('icons', function () {
+    return gulp.src(src + 'icons/*.svg')
+        .pipe(iconfont({
+            fontName: 'icons-font',
+            prependUnicode: true,
+            formats: ['ttf', 'eot', 'woff', 'woff2'],
+            timestamp: Math.round(Date.now() / 1000)
+        }))
+        .on('glyphs', function (glyphs, options) {
+            console.log(glyphs);
+        })
+        .pipe(gulp.dest(dest + 'fonts/icons'));
+});
+
+gulp.task('browsersync', ['default'], function () {
+    if (domain) {
+        browserSync.init({
+            proxy: domain,
+            watchOptions: {
+                debounceDelay: 1000
+            }
+        });
+    } else {
+        browserSync.init({
+            server: {
+                baseDir: 'public',
+                watchOptions: {
+                    debounceDelay: 1000
+                }
+            }
+        });
+    }
+    gulp.watch(src + 'css/**', function () {
+        runSequence('css', function () {
+            browserSync.reload();
+        });
+    });
+
+    gulp.watch([src + 'js/*.js', src + 'js/*.ts', '!' + src + 'ts_temp'], function () {
+        runSequence('js', function () {
+            browserSync.reload();
+        });
+    });
+
+    gulp.watch('public/*.html').on('change', browserSync.reload);
+});
+
+
