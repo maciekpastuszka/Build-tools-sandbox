@@ -28,7 +28,7 @@ var plumber = require('gulp-plumber'),
     browserSync = require('browser-sync').create();
 
 var domain = '',
-    src = './src/',
+    src = './resources/',
     dest = './public/',
     modules = './node_modules/';
 
@@ -158,7 +158,7 @@ gulp.task('browsersync', ['default'], function () {
     });
 
     gulp.watch([src + 'js/*.js', src + 'js/*.ts', '!' + src + 'ts_temp'], function () {
-        runSequence('js', function () {
+        runSequence('ts-scripts', 'js-scripts', function () {
             browserSync.reload();
         });
     });

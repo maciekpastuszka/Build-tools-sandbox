@@ -3,3 +3,5 @@ public/css
 public/js
 public/img
 .idea/
+
+!public/guide
