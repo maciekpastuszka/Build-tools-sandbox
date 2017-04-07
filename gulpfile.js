@@ -71,7 +71,7 @@ gulp.task('js', function () {
 
 gulp.task('js-scripts', function () {
     return gulp.src([
-        src + 'js/script.js',
+        src + 'js/scripts.js',
         src + 'js/ts_temp/*.js' //compiled TS
     ])
         .pipe(plumber({
