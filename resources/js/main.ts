@@ -10,7 +10,9 @@ function getPerson(person: Person): void { //void = not return
 getPerson({name: "Maciek", age: 27});
 
 class Greeter {
-    greeting: string;
+    greeting: string = "Default";
+    saying: string;
+    static msg: string = "Msg";
     constructor(message: string) {
         this.greeting = message;
     }
@@ -19,5 +21,7 @@ class Greeter {
     }
 }
 
-let greeter = new Greeter("world");
+let greeter = new Greeter('world');
 greeter.greet();
+
+greeter.saying = 'Test';
