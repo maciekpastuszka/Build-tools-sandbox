@@ -1,12 +1,4 @@
-function Person(name) {
-    this.name = name;
-    this.sayName = function () {
-        console.log(this.name);
-    };
-}
-
-var person1 = new Person("Maciek");
-
+console.clear();
 
 function Person(name) {
     this.name = name;
@@ -22,11 +14,10 @@ Person.prototype = {
 var person1 = new Person("Maciek");
 
 
-
 var aya = aya || {};
 aya.framework = function () {
     // private property
-    var version = '0.0.2';
+    var version = '1';
     // private method
     var getVersion = function () {
         return version;
