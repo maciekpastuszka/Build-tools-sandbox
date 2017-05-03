@@ -69,7 +69,16 @@ gulp.task('js', function () {
     });
 });
 
-gulp.task('js-scripts', function () {
+
+gulp.task('js-lint', function () {
+    return gulp.src([
+        src + 'js/*.js'
+    ])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+});
+
+gulp.task('js-scripts', ['js-lint'], function () {
     return gulp.src([
         src + 'js/scripts.js',
         src + 'js/ts_temp/*.js' //compiled TS
@@ -80,8 +89,6 @@ gulp.task('js-scripts', function () {
             }
         }))
         .pipe(sourcemaps.init())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
