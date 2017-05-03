@@ -19,9 +19,13 @@ class Greeter {
     greet() {
         console.log(`Hi ${this.greeting}`);
     }
+    static hello() {
+        console.log('Hello');
+    }
 }
 
 let greeter = new Greeter('world');
 greeter.greet();
 
 greeter.saying = 'Test';
+

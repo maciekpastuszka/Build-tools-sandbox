@@ -6,7 +6,8 @@ var tslint = require("gulp-tslint"),
     uglify = require('gulp-uglify'),
     ts = require("gulp-typescript"),
     tsProject = ts.createProject("tsconfig.json"),
-    jshint = require('gulp-jshint');
+    jshint = require('gulp-jshint'),
+    babel = require('gulp-babel');
 
 /* CSS */
 var sass = require('gulp-sass'),
@@ -88,6 +89,7 @@ gulp.task('js-scripts', ['js-lint'], function () {
                 console.log(err);
             }
         }))
+        .pipe(babel())
         .pipe(sourcemaps.init())
         .pipe(concat('scripts.js'))
         .pipe(uglify())

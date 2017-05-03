@@ -10,6 +10,9 @@ var Greeter = (function () {
     Greeter.prototype.greet = function () {
         console.log("Hi " + this.greeting);
     };
+    Greeter.hello = function () {
+        console.log('Hello');
+    };
     return Greeter;
 }());
 Greeter.msg = "Msg";
