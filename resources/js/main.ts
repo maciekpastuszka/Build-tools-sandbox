@@ -9,6 +9,7 @@ function getPerson(person: Person): void { //void = not return
 
 getPerson({name: "Maciek", age: 27});
 
+
 class Greeter {
     greeting: string = "Default";
     saying: string;

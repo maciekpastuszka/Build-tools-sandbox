@@ -56,20 +56,22 @@
 // var module = new Module("Maciek");
 // module.foo();
 
-// class Greeter {
-//     constructor(message) {
-//         this.greeting = message;
-//     }
-//     static greet() { //Greeter instance method
-//         console.log(`Hi ${this.greeting}`);
-//     }
-//
-//     hello() { //Greeter prototype method
-//         console.log(`Hello ${this.greeting}`);
-//     }
-// }
-//
-//
-// let test = new Greeter('world');
+class Greeter {
+    constructor(message) {
+        this.greeting = message;
+    }
+    static greet() { //Greeter instance method
+        console.log(`Hi ${this.greeting}`);
+    }
+
+    hello() { //Greeter prototype method
+        console.log(`Hello ${this.greeting}`);
+    }
+}
+
+
+
+
+let test = new Greeter('world');
 
 // console.log(Greeter);

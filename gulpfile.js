@@ -81,7 +81,7 @@ gulp.task('js-lint', function () {
 
 gulp.task('js-scripts', ['js-lint'], function () {
     return gulp.src([
-        src + 'js/scripts.js',
+        // src + 'js/scripts.js',
         src + 'js/ts_temp/*.js' //compiled TS
     ])
         .pipe(plumber({
