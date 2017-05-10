@@ -36,6 +36,7 @@ var AwesomePerson = (function (_super) {
     }
     AwesomePerson.prototype.greet = function () {
         console.log("Hi awesome " + this.greeting);
+        _super.prototype.greet.call(this);
     };
     return AwesomePerson;
 }(Greeter));

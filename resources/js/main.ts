@@ -33,7 +33,8 @@ greeter.saying = 'Test';
 
 class AwesomePerson extends Greeter {
     greet() {
-        console.log(`Hi awesome ${this.greeting}`);
+        console.log(`Hi awesome ${this.greeting}`)
+        super.greet();
     }
 }
 
