@@ -70,8 +70,6 @@ class Greeter {
 }
 
 
-
-
 let test = new Greeter('world');
 
 // console.log(Greeter);

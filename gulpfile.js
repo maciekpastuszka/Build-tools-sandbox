@@ -142,7 +142,7 @@ gulp.task('icons', function () {
         .pipe(gulp.dest(dest + 'fonts/icons'));
 });
 
-gulp.task('browsersync', ['default'], function () {
+gulp.task('bs', ['default'], function () {
     if (domain) {
         browserSync.init({
             proxy: domain,
