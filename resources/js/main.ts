@@ -30,3 +30,12 @@ greeter.greet();
 
 greeter.saying = 'Test';
 
+
+class AwesomePerson extends Greeter {
+    greet() {
+        console.log(`Hi awesome ${this.greeting}`);
+    }
+}
+
+let awesome = new AwesomePerson('awesome world');
+awesome.greet();

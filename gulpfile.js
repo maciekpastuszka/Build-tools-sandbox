@@ -92,7 +92,7 @@ gulp.task('js-scripts', ['js-lint'], function () {
         .pipe(babel())
         .pipe(sourcemaps.init())
         .pipe(concat('scripts.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(size({title: 'Scripts'}))
         .pipe(plumber.stop())
