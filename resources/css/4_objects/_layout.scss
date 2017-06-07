@@ -8,6 +8,6 @@
 }
 
 .row {
-  @include row(15px);
+  @include row();
 }
 

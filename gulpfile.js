@@ -1,114 +1,98 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
 
 /* JS */
-var tslint = require("gulp-tslint"),
-    concat = require('gulp-concat'),
+const concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    ts = require("gulp-typescript"),
-    tsProject = ts.createProject("tsconfig.json"),
     jshint = require('gulp-jshint'),
     babel = require('gulp-babel');
 
 /* CSS */
-var sass = require('gulp-sass'),
+const sass = require('gulp-sass'),
     cssnano = require('gulp-cssnano'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    sassGlob = require('gulp-sass-glob');
 
 /* Image */
-var imagemin = require('gulp-imagemin');
-
-/* Icons */
-var iconfont = require('gulp-iconfont');
+const imagemin = require('gulp-imagemin');
 
 /* Other */
-var plumber = require('gulp-plumber'),
+const plumber = require('gulp-plumber'),
     sourcemaps = require('gulp-sourcemaps'),
     size = require('gulp-size'),
     changed = require('gulp-changed'),
     runSequence = require('run-sequence'),
-    browserSync = require('browser-sync').create();
+    browserSync = require('browser-sync').create(),
+    notify = require("gulp-notify");
 
-var domain = '',
-    src = './resources/',
+/**
+ * Project sources
+ */
+const domain = '',
+    src = './src/',
     dest = './public/',
     modules = './node_modules/';
 
 gulp.task('default', function () {
     runSequence(
-        ['css', 'js', 'images', 'icons'], ['fonts']
+        ['css', 'js', 'images'], ['fonts']
     );
 });
 
 gulp.task('css', function () {
     return gulp.src(src + 'css/main.scss')
-        .pipe(plumber({
-            errorHandler: function (err) {
-                console.log(err);
-            }
-        }))
+        .pipe(sassGlob())
+        .pipe(plumber({errorHandler: notify.onError({title: "CSS", message: 'Error!'})}))
         .pipe(sourcemaps.init())
         .pipe(sass({
-            precision: 6,
-            onError: function (err) {
-                return console.log(err);
-            }
+            precision: 6
         }))
         .pipe(autoprefixer({
             browsers: ['last 3 versions'],
             cascade: false
         }))
         .pipe(cssnano())
-        .pipe(plumber.stop())
         .pipe(sourcemaps.write('/'))
         .pipe(size({title: 'Styles'}))
-        .pipe(gulp.dest(dest + 'css'));
+        .pipe(gulp.dest(dest + 'css'))
+        .pipe(notify({title: "CSS", message: 'Ready!', onLast: true}))
+        .pipe(plumber.stop());
 });
 
 gulp.task('js', function () {
-    runSequence('ts-scripts', 'js-scripts', function () {
+    return runSequence('js-vendor', 'js-scripts', 'js-build', function () {
         console.log('JS finish.');
     });
 });
 
-
-gulp.task('js-lint', function () {
+gulp.task('js-vendor', function () {
     return gulp.src([
-        src + 'js/*.js'
-    ])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        src + 'js/vendor/*'
+    ]).pipe(concat('vendor.js'))
+        .pipe(gulp.dest(src + 'js/temp'));
 });
 
-gulp.task('js-scripts', ['js-lint'], function () {
+gulp.task('js-scripts', function () {
     return gulp.src([
-        // src + 'js/scripts.js',
-        src + 'js/ts_temp/*.js' //compiled TS
+        src + 'js/script.js'
     ])
-        .pipe(plumber({
-            errorHandler: function (err) {
-                console.log(err);
-            }
-        }))
-        .pipe(babel())
+        .pipe(plumber({errorHandler: notify.onError({title: "JS", message: 'Error!'})}))
         .pipe(sourcemaps.init())
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
         .pipe(concat('scripts.js'))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(size({title: 'Scripts'}))
+        .pipe(gulp.dest(src + 'js/temp'))
         .pipe(plumber.stop())
-        .pipe(gulp.dest(dest + 'js'));
+        .pipe(notify({title: "JS", message: 'Ready!', onLast: true}));
 });
 
-gulp.task('ts-scripts', function () {
+gulp.task('js-build', function () {
     return gulp.src([
-        src + 'js/main.ts'
-    ])
-        .pipe(tslint({
-            configuration: "tslint.json"
-        }))
-        .pipe(tslint.report())
-        .pipe(tsProject())
-        .js.pipe(gulp.dest(src + '/js/ts_temp'));
+        src + 'js/temp/*.js'
+    ]).pipe(concat('scripts.js'))
+        .pipe(gulp.dest(dest + 'js'));
 });
 
 gulp.task('images', function () {
@@ -128,21 +112,7 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest(dest + 'fonts'));
 });
 
-gulp.task('icons', function () {
-    return gulp.src(src + 'icons/*.svg')
-        .pipe(iconfont({
-            fontName: 'icons-font',
-            prependUnicode: true,
-            formats: ['ttf', 'eot', 'woff', 'woff2'],
-            timestamp: Math.round(Date.now() / 1000)
-        }))
-        .on('glyphs', function (glyphs, options) {
-            console.log(glyphs);
-        })
-        .pipe(gulp.dest(dest + 'fonts/icons'));
-});
-
-gulp.task('bs', ['default'], function () {
+gulp.task('sync', ['default'], function () {
     if (domain) {
         browserSync.init({
             proxy: domain,
@@ -151,6 +121,7 @@ gulp.task('bs', ['default'], function () {
             }
         });
     } else {
+        //Jeśli nie ma zdefiniowanej domeny odpal serwer w katalogu public
         browserSync.init({
             server: {
                 baseDir: 'public',
@@ -161,18 +132,16 @@ gulp.task('bs', ['default'], function () {
         });
     }
     gulp.watch(src + 'css/**', function () {
+        //zapobiega przeładowaniu przeglądarki przed końcem transpilacji
         runSequence('css', function () {
             browserSync.reload();
         });
     });
-
-    gulp.watch([src + 'js/*.js', src + 'js/*.ts', '!' + src + 'ts_temp'], function () {
-        runSequence('ts-scripts', 'js-scripts', function () {
+    gulp.watch([src + 'js/*.js'], function () {
+        //zapobiega przeładowaniu przeglądarki przed końcem transpilacji
+        runSequence('js-scripts', 'js-build', function () {
             browserSync.reload();
         });
     });
-
     gulp.watch('public/*.html').on('change', browserSync.reload);
 });
-
-
