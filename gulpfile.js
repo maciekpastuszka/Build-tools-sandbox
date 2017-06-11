@@ -79,6 +79,9 @@ gulp.task('js-scripts', function () {
         .pipe(sourcemaps.init())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
