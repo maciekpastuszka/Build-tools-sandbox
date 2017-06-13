@@ -9,7 +9,8 @@ const concat = require('gulp-concat'),
 /* CSS */
 const sass = require('gulp-sass'),
     cssnano = require('gulp-cssnano'),
-    autoprefixer = require('gulp-autoprefixer'),
+    autoprefixer = require('autoprefixer'),
+    postcss = require('gulp-postcss'),
     sassGlob = require('gulp-sass-glob');
 
 /* Image */
@@ -46,10 +47,7 @@ gulp.task('css', function () {
         .pipe(sass({
             precision: 6
         }))
-        .pipe(autoprefixer({
-            browsers: ['last 3 versions'],
-            cascade: false
-        }))
+        .pipe(postcss([ autoprefixer() ]))
         .pipe(cssnano())
         .pipe(sourcemaps.write('/'))
         .pipe(size({title: 'Styles'}))
