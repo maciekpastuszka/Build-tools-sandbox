@@ -6,6 +6,12 @@ const concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
     babel = require('gulp-babel');
 
+/* JS Modules*/
+const babelify = require('babelify'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer');
+
 /* CSS */
 const sass = require('gulp-sass'),
     cssnano = require('gulp-cssnano'),
@@ -29,7 +35,7 @@ const plumber = require('gulp-plumber'),
  * Project sources
  */
 const domain = '',
-    src = './src/',
+    src = './resources/',
     dest = './public/',
     modules = './node_modules/';
 
@@ -70,28 +76,30 @@ gulp.task('js-vendor', function () {
 });
 
 gulp.task('js-scripts', function () {
-    return gulp.src([
-        src + 'js/script.js'
-    ])
-        .pipe(plumber({errorHandler: notify.onError({title: "JS", message: 'Error!'})}))
-        .pipe(sourcemaps.init())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(concat('scripts.js'))
+    gulp.src([
+        src + 'js/components/*.js',
+        src + 'js/main.js'
+    ]).pipe(jshint())
+        .pipe(jshint.reporter('default'));
+
+    return browserify({
+        entries: src + 'js/main.js',
+        extensions: ['.js'], debug: true
+    })
+        .transform(babelify, {presets: ['es2015']})
+        .bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
         .pipe(uglify())
-        .pipe(sourcemaps.write('./'))
-        .pipe(size({title: 'Scripts'}))
+        .pipe(concat('modules.js'))
         .pipe(gulp.dest(src + 'js/temp'))
-        .pipe(plumber.stop())
-        .pipe(notify({title: "JS", message: 'Ready!', onLast: true}));
+        .pipe(plumber.stop());
 });
 
 gulp.task('js-build', function () {
     return gulp.src([
-        src + 'js/temp/*.js'
+        src + 'js/temp/vendor.js',
+        src + 'js/temp/modules.js'
     ]).pipe(concat('scripts.js'))
         .pipe(gulp.dest(dest + 'js'));
 });
@@ -138,7 +146,7 @@ gulp.task('sync', ['default'], function () {
             browserSync.reload();
         });
     });
-    gulp.watch([src + 'js/*.js'], function () {
+    gulp.watch([src + 'js/*.js', src + 'js/components/*.js'], function () {
         //zapobiega przeładowaniu przeglądarki przed końcem transpilacji
         runSequence('js-scripts', 'js-build', function () {
             browserSync.reload();
