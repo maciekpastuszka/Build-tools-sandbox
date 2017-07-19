@@ -90,8 +90,10 @@ gulp.task('js-scripts', function () {
         .bundle()
         .pipe(source('main.js'))
         .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
         .pipe(concat('modules.js'))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(src + 'js/temp'))
         .pipe(plumber.stop());
 });
@@ -100,7 +102,9 @@ gulp.task('js-build', function () {
     return gulp.src([
         src + 'js/temp/vendor.js',
         src + 'js/temp/modules.js'
-    ]).pipe(concat('scripts.js'))
+    ]).pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(concat('scripts.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(dest + 'js'));
 });
 
@@ -130,7 +134,6 @@ gulp.task('sync', ['default'], function () {
             }
         });
     } else {
-        //Jeśli nie ma zdefiniowanej domeny odpal serwer w katalogu public
         browserSync.init({
             server: {
                 baseDir: 'public',
@@ -141,13 +144,11 @@ gulp.task('sync', ['default'], function () {
         });
     }
     gulp.watch(src + 'css/**', function () {
-        //zapobiega przeładowaniu przeglądarki przed końcem transpilacji
         runSequence('css', function () {
             browserSync.reload();
         });
     });
     gulp.watch([src + 'js/*.js', src + 'js/components/*.js'], function () {
-        //zapobiega przeładowaniu przeglądarki przed końcem transpilacji
         runSequence('js-scripts', 'js-build', function () {
             browserSync.reload();
         });
