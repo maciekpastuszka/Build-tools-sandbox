@@ -12,7 +12,8 @@
       "utilitySelectors": "^\\.util-[a-z]+$"
     },
     "max-nesting-depth": [ 1, {
-      ignore: ["blockless-at-rules"]
+      ignore: ["blockless-at-rules"],
+      ignoreAtRules: ["/^include/", "media"]
     }],
     "selector-max-id": 0,
     "color-named": "never",

@@ -24,13 +24,14 @@ const sass = require('gulp-sass'),
 const imagemin = require('gulp-imagemin');
 
 /* Other */
-const plumber = require('gulp-plumber'),
-    sourcemaps = require('gulp-sourcemaps'),
+const sourcemaps = require('gulp-sourcemaps'),
     size = require('gulp-size'),
     changed = require('gulp-changed'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync').create(),
-    notify = require("gulp-notify");
+    args = require('yargs').argv,
+    gulpif = require('gulp-if');
+
 
 /**
  * Project sources
@@ -39,6 +40,11 @@ const domain = '',
     src = './resources/',
     dest = './public/',
     modules = './node_modules/';
+
+const isProduction = args.env === 'production';
+const isDevelopment = args.env === 'development';
+console.log('ENV: ' + args.env);
+
 
 gulp.task('default', function () {
     runSequence(
@@ -60,18 +66,18 @@ gulp.task('css-lint', function () {
 gulp.task('css', ['css-lint'], function () {
     return gulp.src(src + 'css/main.scss')
         .pipe(sassGlob())
-        .pipe(plumber({errorHandler: notify.onError({title: "CSS", message: 'Error!'})}))
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(isDevelopment, sourcemaps.init()))
         .pipe(sass({
             precision: 6
         }))
+        .on('error', function (err) {
+            console.log(err.message);
+            this.emit('end');
+        })
         .pipe(postcss([autoprefixer()]))
-        .pipe(cssnano())
-        .pipe(sourcemaps.write('/'))
-        .pipe(size({title: 'Styles'}))
-        .pipe(gulp.dest(dest + 'css'))
-        .pipe(notify({title: "CSS", message: 'Ready!', onLast: true}))
-        .pipe(plumber.stop());
+        .pipe(gulpif(isProduction, cssnano()))
+        .pipe(gulpif(isDevelopment, sourcemaps.write('/')))
+        .pipe(gulp.dest(dest + 'css'));
 });
 
 gulp.task('js', function () {
@@ -87,13 +93,15 @@ gulp.task('js-vendor', function () {
         .pipe(gulp.dest(src + 'js/temp'));
 });
 
-gulp.task('js-scripts', function () {
+gulp.task('js-hint', function () {
     gulp.src([
         src + 'js/components/*.js',
         src + 'js/main.js'
     ]).pipe(jshint())
         .pipe(jshint.reporter('default'));
+});
 
+gulp.task('js-scripts', ['js-hint'], function () {
     return browserify({
         entries: src + 'js/main.js',
         extensions: ['.js'], debug: true
@@ -102,21 +110,20 @@ gulp.task('js-scripts', function () {
         .bundle()
         .pipe(source('main.js'))
         .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
+        .pipe(gulpif(isDevelopment, sourcemaps.init({loadMaps: true})))
+        .pipe(gulpif(isProduction, uglify()))
         .pipe(concat('modules.js'))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(src + 'js/temp'))
-        .pipe(plumber.stop());
+        .pipe(gulpif(isDevelopment, sourcemaps.write('./')))
+        .pipe(gulp.dest(src + 'js/temp'));
 });
 
 gulp.task('js-build', function () {
     return gulp.src([
         src + 'js/temp/vendor.js',
         src + 'js/temp/modules.js'
-    ]).pipe(sourcemaps.init({loadMaps: true}))
+    ]).pipe(gulpif(isDevelopment, sourcemaps.init({loadMaps: true})))
         .pipe(concat('scripts.js'))
-        .pipe(sourcemaps.write())
+        .pipe(gulpif(isDevelopment, sourcemaps.write()))
         .pipe(gulp.dest(dest + 'js'));
 });
 
@@ -160,7 +167,7 @@ gulp.task('sync', ['default'], function () {
             browserSync.reload();
         });
     });
-    gulp.watch([src + 'js/*.js', src + 'js/components/*.js'], function () {
+    gulp.watch([src + 'js/*.js', src + 'js/components/**/*.js'], function () {
         runSequence('js-scripts', 'js-build', function () {
             browserSync.reload();
         });
