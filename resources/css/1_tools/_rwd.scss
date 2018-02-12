@@ -1,8 +1,4 @@
-/*------------------------------------------
-Breakpoint
-------------------------------------------*/
-
-@mixin breakpoint($width) {
+@mixin rwd($width) {
   @if $width==small {
     @media only screen and (min-width: $rwd-small) {
       @content;
@@ -17,34 +13,5 @@ Breakpoint
     @media only screen and (min-width: $rwd-large) {
       @content;
     }
-  }
-}
-
-/*------------------------------------------
-Retina
-------------------------------------------*/
-
-@mixin retina($file, $type, $width, $height) {
-  background-image: url('../img/' + $file + '.' + $type);
-  background-size: $width $height;
-  @media (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
-    & {
-      background-image: url('../img/' + $file + '-2x.' + $type);
-      background-size: $width $height;
-    }
-  }
-}
-
-/*------------------------------------------
-Responsive background
-------------------------------------------*/
-@mixin section-bg($file,
-$type) {
-  background-image: url('../img/' + $file + '.' + $type);
-  @include breakpoint(small) {
-    background-image: url('../img/' + $file + '-t.' + $type);
-  }
-  @include breakpoint(large) {
-    background-image: url('../img/' + $file + '-d.' + $type);
   }
 }
