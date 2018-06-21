@@ -1,8 +1,7 @@
 node_modules/
-public/css
-public/js
-public/img
+dist/css
+dist/js
+dist/img
 .idea/
-resources/js/temp
 
-!public/guide
+!dist/guide
