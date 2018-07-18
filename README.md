@@ -13,3 +13,12 @@
 ## What's inside?
 * NPM, Webpack, Babel
 * CSS (Sass), BEM, ITCSS, Stylelint
+
+## TODOs
+* dev / prod optimization
+* bundle / code spliting
+* hot reload
+* babel browserlist
+* JS lint
+* Prettier
+* Tests
