@@ -5,38 +5,59 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = {
   entry: './src/js/index.js',
   output: {
+    filename: 'scripts.js',
     path: path.resolve(__dirname, 'dist/js'),
-    filename: 'scripts.js'
+    publicPath: '/dist/'
   },
   mode: 'development',
+  resolve: {
+    modules: [
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, 'src/js'),
+      path.resolve(__dirname, 'src/css'),
+      path.resolve(__dirname, 'src/fonts')
+    ]
+  },
   module: {
     rules: [
+      {
+        test: /.js?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        include: __dirname,
+      },
       {
         test: /\.(scss|css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            {
-              loader: 'css-loader',
-              query: {
-                modules: false,
-                localIdentName: '[path][name]__[local]--[hash:base64:5]'
-              }
-            },
-            'sass-loader'
+            'css-loader',
+            'sass-loader',
+            'postcss-loader'
           ]
         })
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|svg|jpeg)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              mimetype: 'image/png'
+              name: "[name].[ext]",
+              outputPath: '../images/',
+              publicPath: '../images/'
             }
           }
         ],
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          outputPath: '../fonts/',
+          publicPath: '../fonts/'
+        },
       }
     ]
   },
