@@ -26,6 +26,21 @@
 <div class="test"></div>
 
 <script src="js/scripts.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg){
+        console.log('service worker loaded!', reg.scope);
+      }).catch(function(err) {
+      console.log('failed to load service worker', err)
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', function(event) {
+    event.prompt();
+  })
+</script>
 </body>
 
 </html>

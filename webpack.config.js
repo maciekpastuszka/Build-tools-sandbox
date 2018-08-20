@@ -47,7 +47,7 @@ const config = {
         include: __dirname,
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(sc|c)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
