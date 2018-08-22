@@ -13,9 +13,9 @@
     "webpack-cli": "^3.0.8"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=development webpack --progress --hide-modules -d --config webpack.config.js",
-    "prod": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.config.js",
-    "watch": "webpack --progress --hide-modules -d --watch --config webpack.config.js",
+    "build": "cross-env NODE_ENV=development webpack --progress --hide-modules -d --config webpack.prod.js",
+    "prod": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js",
+    "watch": "webpack --progress --hide-modules -d --watch --config webpack.dev.js",
     "start": "webpack-dev-server --inline --hot -d"
   },
   "keywords": [],
