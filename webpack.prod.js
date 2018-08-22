@@ -10,7 +10,7 @@ const common = require('./webpack.common.js');
 const ENV = process.env.NODE_ENV;
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: ENV,
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
