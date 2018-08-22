@@ -1,28 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
+const common = require('./webpack.common.js');
 
-const config = {
-  entry: './src/js/index.js',
-  output: {
-    filename: 'scripts.js',
-    path: path.resolve(__dirname, 'dist/js'),
-    publicPath: '/dist/'
-  },
+const ENV = process.env.NODE_ENV;
+
+module.exports = merge(common, {
   mode: 'production',
-  resolve: {
-    modules: [
-      path.resolve(__dirname, 'node_modules'),
-      path.resolve(__dirname, 'src/js'),
-      path.resolve(__dirname, 'src/css'),
-      path.resolve(__dirname, 'src/fonts')
-    ]
-  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -34,51 +22,13 @@ const config = {
     ]
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
-      filename: '../css/[name].css'
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /.js?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        include: __dirname,
-      },
-      {
-        test: /\.(sc|c)ss$/,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.(png|jpg|svg|jpeg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: "[name].[ext]",
-              outputPath: '../images/',
-              publicPath: '../images/'
-            }
-          }
-        ],
-      },
-      {
-        test: /\.(ttf|eot|woff|woff2)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-          outputPath: '../fonts/',
-          publicPath: '../fonts/'
-        },
-      }
-    ]
-  }
-};
+      filename: 'styles/[name].css'
+    }),
+    ENV !== 'production' ? new webpack.SourceMapDevToolPlugin({}) : undefined
+  ].filter(Boolean),
+});
 
-module.exports = config;
+

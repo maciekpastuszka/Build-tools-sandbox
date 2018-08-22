@@ -1,7 +1,4 @@
 node_modules/
-dist/css
-dist/js
-dist/img
+dist/assets
 .idea/
 
-!dist/guide
