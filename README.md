@@ -1,4 +1,4 @@
-# Front-end starter kit
+# Front-end starter kit & build tools sandbox
 
 ## Build
 ### Development build
@@ -11,6 +11,5 @@
 ```npm run prod```
 
 ## What's inside?
-* NPM, Gulp, Browserify, Babel
-* CSS3 (Sass), BEM, ITCSS, Stylelint
-* JS ES6, ES6 Modules
+* NPM, Webpack, Babel
+* CSS (Sass), BEM, ITCSS, Stylelint
