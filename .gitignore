@@ -1,4 +1,4 @@
-node_modules/
-dist/assets
 .idea/
-
+node_modules/
+dist/
+!dist/index.html
